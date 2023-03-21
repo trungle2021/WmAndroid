@@ -14,11 +14,14 @@ public class RegisterCustomerDTO {
     private String first_name;
     private String last_name;
     private String address;
+
     private String phone;
     private String gender;
     private String email;
+
     private String avatar;
     private String username;
     private String password;
+
     private Integer customerId;
 }
