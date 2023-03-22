@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -8,17 +8,32 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black_900_7f">#7f000000</color>
-    <color name="bluegray_50">#f1f1f1</color>
-    <color name="gray_500">#979797</color>
+    <color name="red_A200_75">#75ff6565</color>
+    <color name="gray_51">#fafcff</color>
+    <color name="blue_A700">#0053ff</color>
+    <color name="gray_50">#f9fcff</color>
+    <color name="black_900_1e">#1e000000</color>
+    <color name="amber_A700">#ffab00</color>
     <color name="black_900">#000000</color>
-    <color name="red_A200">#ff4c4c</color>
-    <color name="bluegray_100">#d7d7d7</color>
-    <color name="blue_A200">#358ff8</color>
-    <color name="deep_purple_A200">#9747ff</color>
-    <color name="black_900_3f">#3f000000</color>
+    <color name="gray_100_99">#99f2f2f2</color>
+    <color name="pink_300">#f16487</color>
+    <color name="black_900_26">#26000000</color>
+    <color name="red_A200_66">#66ff6565</color>
+    <color name="gray_600">#828282</color>
+    <color name="gray_700">#575e66</color>
+    <color name="gray_400">#bdbdbd</color>
+    <color name="red_A200">#ff6565</color>
+    <color name="red_A100">#fc8889</color>
+    <color name="gray_900">#1c1e1f</color>
+    <color name="amber_100">#ffeabe</color>
+    <color name="gray_200_0d">#0dececec</color>
+    <color name="gray_100">#f2f2f2</color>
+    <color name="red_A200_4c">#4cff6666</color>
+    <color name="white_A700_00">#00ffffff</color>
+    <color name="bluegray_200">#acb3bd</color>
+    <color name="blue_100">#bfd4ff</color>
+    <color name="black_900_14">#14000000</color>
     <color name="white_A700">#ffffff</color>
-    <color name="colorPrimary">#00BEAF</color>
-    <color name="colorPrimaryDark">#00988c</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="uncompleted_text_color">#F8F8F8</color>
+    <color name="black_900_59">#59000000</color>
+
 </resources>
