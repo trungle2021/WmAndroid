@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
-    public static final String DOMAIN_APP_API = "http://192.168.1.6:8080/";
+    public static final String DOMAIN_APP_API = "http://192.168.86.245:8080/";
 
 
     public static final String ROLE_ADMIN = "ROLE_ADMIN";

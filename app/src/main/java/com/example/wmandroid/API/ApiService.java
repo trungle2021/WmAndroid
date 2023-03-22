@@ -2,6 +2,7 @@ package com.example.wmandroid.API;
 
 import com.example.wmandroid.DTO.FoodDTO;
 import com.example.wmandroid.DTO.OrganizeTeamDTO;
+import com.example.wmandroid.DTO.VenueDTO;
 import com.example.wmandroid.Utils.SD_CLIENT;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

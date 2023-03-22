@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">WmAndroid</string>
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="lbl_hary_parker">Hary Parker</string>
+    <string name="lbl_wm">Welcome</string>
+    <string name="lbl_heven_hotel">Heven Hotel</string>
+    <string name="lbl_see_more">See more</string>
+    <string name="lbl_recommend">Recommend</string>
+    <string name="lbl_florence">Florence</string>
+    <string name="lbl_venice">Venice</string>
+    <string name="lbl_order">Order</string>
+    <string name="lbl_venue">Venue</string>
+    <string name="lbl_menu">Menu</string>
+    <string name="lbl_overview">Overview</string>
+    <string name="lbl_para_hotel">Para Hotel</string>
+    <string name="lbl_4_9">4.9</string>
+    <string name="lbl_new_place">New Place</string>
+    <string name="msg_capi_luxury_is">Capi Luxury is the most luxurious luxury hotel segment of Capi, located in big...  </string>
+    <string name="msg_capi_luxury_hot">Capi Luxury Hotel</string>
+    <string name="lbl_172_00">$172.00</string>
+    <string name="msg_takes_you_to_th">Takes you to the
+best places</string>
+    <string name="lbl_98">$98</string>
+    <string name="lbl_copichand">Copichand</string>
+    <string name="lbl_review">Review</string>
+    <string name="lbl_a_night">/ A night</string>
+    <string name="lbl_reebok">Reebok</string>
+    <string name="msg_great_lands_ne">Great lands, never-before-seen lands, Let us give you an enjoyable and memorable journey</string>
+    <string name="msg_2w_people_left">2w people left footprints  </string>
+    <string name="lbl_select_a_room">Select a room</string>
+    <string name="lbl_189_00">$189.00</string>
+    <string name="lbl_detail">Detail</string>
 </resources>

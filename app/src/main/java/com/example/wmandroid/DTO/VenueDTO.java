@@ -1,9 +1,10 @@
 package com.example.wmandroid.DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-
 public class VenueDTO {
 
     private int id;
@@ -12,4 +13,6 @@ public class VenueDTO {
     private Integer maxPeople;
     private Double price;
     private boolean active;
+
+
 }
