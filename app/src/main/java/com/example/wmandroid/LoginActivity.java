@@ -28,13 +28,13 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor edit;
     ActivityLoginBinding loginBinding;
-    EditText tvUsername;
-    EditText tvPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
+        getSupportActionBar().hide();
         setContentView(loginBinding.getRoot());
 
         loginBinding.btnLogin.setOnClickListener(v -> {

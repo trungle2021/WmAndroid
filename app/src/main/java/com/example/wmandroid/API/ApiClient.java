@@ -26,10 +26,10 @@ public class ApiClient {
     private static Activity activity1;
     private static final ArrayList<String> EXCLUDED_API = new ArrayList<String>(){
         {
-            add(SD_CLIENT.DOMAIN_APP_API + api_customerLoginUrl);
-            add(SD_CLIENT.DOMAIN_APP_API + api_customerRegisterUrl);
-            add(SD_CLIENT.DOMAIN_APP_API + api_processForgotPassword);
-            add(SD_CLIENT.DOMAIN_APP_API + api_processChangePassword);
+            add(api_customerLoginUrl);
+            add(api_customerRegisterUrl);
+            add(api_processForgotPassword);
+            add(api_processChangePassword);
         }
     };
     public static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
