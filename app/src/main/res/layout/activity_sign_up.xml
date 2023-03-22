@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/icon_arrow_"
+                android:id="@+id/icon_arrow_signUp1"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="5dp"
@@ -155,7 +155,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="top"
-                    android:text="Password"
+                    android:text="Address"
                     android:textColor="#312E49"
                     android:textSize="14sp" />
 

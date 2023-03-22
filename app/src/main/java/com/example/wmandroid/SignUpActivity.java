@@ -4,6 +4,7 @@ import static com.example.wmandroid.Utils.Regex.isValidEmail;
 import static com.example.wmandroid.Utils.Regex.isValidName;
 import static com.example.wmandroid.Utils.Regex.isValidPhone;
 import static com.example.wmandroid.Utils.Regex.phone_vietnamese;
+import static com.example.wmandroid.Utils.SD_CLIENT.stepSignUp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,7 +42,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     int current_state = 0;
 
-    String[] descriptionsData = {"Personal Information", "User Account"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         stepsView = signUpBinding.stepsView;
 
-        stepsView.setLabels(descriptionsData)
+        stepsView.setLabels(stepSignUp)
                 .setBarColorIndicator(Color.BLACK)
                 .setProgressColorIndicator(getResources().getColor(R.color.colorAccent))
                 .setLabelColorIndicator(getResources().getColor(com.anton46.stepsview.R.color.orange))
@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .drawView();
 
         stepsView.setCompletedPosition(current_state);
-        int length = descriptionsData.length;
+        int length = stepSignUp.length;
 
         signUpBinding.btnSubmitPage1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +74,8 @@ public class SignUpActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(SignUpActivity.this, SignUp2Activity.class);
                     intent.putExtra("personalInfo", registerDTO);
+                    intent.putExtra("current_state",current_state);
+                    intent.putExtra("length",length);
                     startActivity(intent);
                 }
 
@@ -92,15 +94,15 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(SignUpActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            if (isValidName(firstName.getText().toString()) && isValidName(lastName.getText().toString())) {
+            if (!isValidName(firstName.getText().toString()) || !isValidName(lastName.getText().toString())) {
                 Toast.makeText(SignUpActivity.this, "Please enter a valid name containing only letters and spaces. Special characters and numbers are not allowed.", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (isValidPhone(phone.getText().toString())) {
+            if (!isValidPhone(phone.getText().toString())) {
                 Toast.makeText(SignUpActivity.this, "The phone number you entered does not correct. Please enter a valid phone number starting with 84 or 0", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (isValidEmail(firstName.getText().toString())) {
+            if (!isValidEmail(email.getText().toString())) {
                 Toast.makeText(SignUpActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
                 return false;
             }
