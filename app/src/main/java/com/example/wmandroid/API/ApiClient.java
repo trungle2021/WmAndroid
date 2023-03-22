@@ -1,5 +1,7 @@
 package com.example.wmandroid.API;
 
+import com.example.wmandroid.DTO.ErrorDetails;
+import com.example.wmandroid.DTO.RegisterCustomerDTO;
 import com.example.wmandroid.Utils.SD_CLIENT;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -27,7 +29,6 @@ public class ApiClient {
     private static final ArrayList<String> EXCLUDED_API = new ArrayList<String>(){
         {
             add(api_customerLoginUrl);
-            add(api_customerRegisterUrl);
             add(api_processForgotPassword);
             add(api_processChangePassword);
         }
@@ -55,8 +56,15 @@ public class ApiClient {
                 }
             }
 
-
+            if(request.url().toString().equals(api_customerRegisterUrl)){
+                request.newBuilder()
+                        .removeHeader("User-Agent")
+                        .header("User-Agent","Android 11;Pixel 6")
+                        .build();
+                return chain.proceed(request);
+            }
             Request newRequest  = chain.request().newBuilder()
+                    .addHeader("User-Agent","Android 11;Pixel 6")
                     .addHeader("Authorization", "Bearer " + getToken(activity1))
                     .build();
             return chain.proceed(newRequest);
@@ -76,6 +84,14 @@ public class ApiClient {
 
     public static <T> T createService(Class<T> serviceClass) {
         return getRetrofitInstance().create(serviceClass);
+    }
+
+    public <T> T getError(Response response, Class<T> errorClass) throws IOException {
+        if (response.() != null) {
+            String errorJson = response.errorBody().string();
+            return new Gson().fromJson(errorJson, errorClass);
+        }
+        return null;
     }
 
 
