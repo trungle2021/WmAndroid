@@ -7,7 +7,17 @@ import android.util.Log;
 import android.view.View;
 
 import com.anton46.stepsview.StepsView;
+import com.example.wmandroid.API.ApiClient;
+import com.example.wmandroid.API.Auth.AuthService;
+import com.example.wmandroid.DTO.JWTAuthResponse;
+import com.example.wmandroid.DTO.LoginDTO;
 import com.example.wmandroid.databinding.ActivityMainBinding;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +30,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
+
+        AuthService authService = ApiClient.createService(AuthService.class);
+        LoginDTO loginDTO = new LoginDTO();
+        loginDTO.setUsername("trungle");
+        loginDTO.setPassword("trungle");
+            authService.customerLogin(loginDTO).enqueue(new Callback<JWTAuthResponse>() {
+                @Override
+                public void onResponse(Call<JWTAuthResponse> call, Response<JWTAuthResponse> response) {
+                    JWTAuthResponse jwtAuthResponse = response.body();
+                }
+
+                @Override
+                public void onFailure(Call<JWTAuthResponse> call, Throwable t) {
+                   Log.d("Error ","Error API",t);
+                }
+            });
+
+    }
+
+    private void callAPILogin(){
+
     }
 
 
