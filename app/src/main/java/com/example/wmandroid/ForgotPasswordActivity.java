@@ -1,4 +1,4 @@
-package com.example.wmandroid.AuthActivity;
+package com.example.wmandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

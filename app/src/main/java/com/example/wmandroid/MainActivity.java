@@ -1,29 +1,33 @@
 package com.example.wmandroid;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.graphics.Color;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
-import com.example.wmandroid.API.ApiService;
-import com.example.wmandroid.DTO.FoodDTO;
-import com.example.wmandroid.DTO.OrganizeTeamDTO;
+import com.anton46.stepsview.StepsView;
+import com.example.wmandroid.API.ApiClient;
+import com.example.wmandroid.API.Auth.AuthService;
+import com.example.wmandroid.DTO.JWTAuthResponse;
+import com.example.wmandroid.DTO.LoginDTO;
+import com.example.wmandroid.databinding.ActivityMainBinding;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    ActivityMainBinding mainBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+        mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mainBinding.getRoot());
 
+
+    }
 }
