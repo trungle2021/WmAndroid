@@ -18,6 +18,20 @@ public class Regex {
         }
         return false;
     };
+    public static boolean isValidUsername(String username){
+        if(email.matches(Regex.email)){
+            return true;
+        }
+        return false;
+    };
+
+    public static boolean convertToBase64(String file){
+        if(email.matches(Regex.email)){
+            return true;
+        }
+        return false;
+    };
+
     public static boolean isValidEmail(String email){
         if(email.matches(Regex.email)){
             return true;

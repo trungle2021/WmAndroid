@@ -7,6 +7,7 @@ import static com.example.wmandroid.Utils.Regex.phone_vietnamese;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.anton46.stepsview.StepsView;
+import com.example.wmandroid.DTO.RegisterCustomerDTO;
 import com.example.wmandroid.R;
 import com.example.wmandroid.Utils.Regex;
 import com.example.wmandroid.databinding.ActivitySignUpBinding;
@@ -30,6 +32,9 @@ public class SignUpActivity extends AppCompatActivity {
     EditText phone;
     EditText email;
     EditText address;
+    EditText gender;
+    RegisterCustomerDTO registerDTO = new RegisterCustomerDTO();
+
 
     int current_state = 0;
 
@@ -40,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         signUpBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(signUpBinding.getRoot());
-        stepsView = signUpBinding.stepsView;
+        init();
 
         stepsView = signUpBinding.stepsView;
 
@@ -57,12 +62,16 @@ public class SignUpActivity extends AppCompatActivity {
         signUpBinding.btnSubmitPage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(validSignUp1()){
                     if (current_state < (length - 1)) {
                         current_state += 1;
                         signUpBinding.stepsView.setCompletedPosition(current_state).drawView();
                     }
-                    Log.d("current_state = ", current_state + " ");
+
+                    Intent intent = new Intent(SignUpActivity.this, SignUp2Activity.class);
+                    intent.putExtra("personalInfo", registerDTO);
+                    startActivity(intent);
                 }
 
             }
@@ -89,7 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
              TextUtils.isEmpty(lastName.getText()) ||
              TextUtils.isEmpty(phone.getText())    ||
              TextUtils.isEmpty(email.getText())    ||
-             TextUtils.isEmpty(phone.getText())    ||
+             TextUtils.isEmpty(gender.getText())    ||
              TextUtils.isEmpty(address.getText()))
         {
             Toast.makeText(SignUpActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -107,6 +116,12 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
                 return false;
             }
+            registerDTO.setFirst_name(firstName.getText().toString());
+            registerDTO.setLast_name(lastName.getText().toString());
+            registerDTO.setPhone(phone.getText().toString());
+            registerDTO.setEmail(email.getText().toString());
+            registerDTO.setAddress(address.getText().toString());
+            registerDTO.setGender(gender.getText().toString());
             return true;
         }
     }

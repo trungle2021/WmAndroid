@@ -1,5 +1,7 @@
 package com.example.wmandroid.DTO;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterCustomerDTO {
+public class RegisterCustomerDTO implements Serializable {
     private int id;
     private String first_name;
     private String last_name;
