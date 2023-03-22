@@ -6,9 +6,6 @@
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textFontWeight" tools:targetApi="p">600</item>
     </style>
-    <style name="by_signing_">
-
-    </style>
     <style name="groupStylecornerRadius">
         <item name="android:background">@drawable/rectangle_gradient_s_white_a700_00_c_gray_200_0d_e_black_900_59_radius_20</item>
     </style>
