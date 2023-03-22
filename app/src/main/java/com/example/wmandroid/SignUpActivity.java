@@ -102,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "The phone number you entered does not correct. Please enter a valid phone number starting with 84 or 0", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if (!isValidEmail(firstName.getText().toString())) {
+            if (!isValidEmail(email.getText().toString())) {
                 Toast.makeText(SignUpActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
                 return false;
             }
