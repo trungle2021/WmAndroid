@@ -7,6 +7,4 @@ public class VenueImgDTO {
     private int id;
     private String url;
     private int venueId;
-
-
 }
