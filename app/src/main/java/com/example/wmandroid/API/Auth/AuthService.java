@@ -8,6 +8,7 @@ import static com.example.wmandroid.Utils.SD_CLIENT.api_processForgotPassword;
 import com.example.wmandroid.DTO.JWTAuthResponse;
 import com.example.wmandroid.DTO.LoginDTO;
 import com.example.wmandroid.DTO.OrganizeTeamDTO;
+import com.example.wmandroid.DTO.PasswordDTO;
 import com.example.wmandroid.DTO.RegisterCustomerDTO;
 
 import java.util.List;
@@ -23,12 +24,12 @@ public interface AuthService  {
     Call<JWTAuthResponse> customerLogin(@Body LoginDTO loginDTO);
 
     @POST(api_customerRegisterUrl)
-    Call<String> customerRegister(@Body RegisterCustomerDTO registerDTO);
+    Call<RegisterCustomerDTO> customerRegister(@Body RegisterCustomerDTO registerDTO);
 
-//    @POST(api_processForgotPassword)
-//    Call<List<LoginDTO>> processForgotPassword(@Body RegisterCustomerDTO registerDTO);
-//
-//    @POST(api_processChangePassword)
-//    Call<List<LoginDTO>> processChangePassword(@Body RegisterCustomerDTO registerDTO);
+    @POST(api_processForgotPassword)
+    Call<String> processForgotPassword(@Body String email);
+
+    @POST(api_processChangePassword)
+    Call<List<LoginDTO>> processChangePassword(@Body PasswordDTO passwordDTO);
 
 }

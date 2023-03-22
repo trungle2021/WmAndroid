@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
     private void storeToken(Response<JWTAuthResponse> response){
         prefs=LoginActivity.this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         edit=prefs.edit();
@@ -102,4 +103,5 @@ public class LoginActivity extends AppCompatActivity {
         Log.i("Login",saveToken);
         edit.commit();
     }
+
 }
