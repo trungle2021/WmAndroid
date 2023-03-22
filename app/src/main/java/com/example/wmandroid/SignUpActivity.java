@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.anton46.stepsview.StepsView;
@@ -32,7 +34,8 @@ public class SignUpActivity extends AppCompatActivity {
     EditText phone;
     EditText email;
     EditText address;
-    EditText gender;
+    RadioGroup radioGenderGroup;
+    RadioButton radioButton;
     RegisterCustomerDTO registerDTO = new RegisterCustomerDTO();
 
 
@@ -63,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(validSignUp1()){
+                if (validSignUp1()) {
                     if (current_state < (length - 1)) {
                         current_state += 1;
                         signUpBinding.stepsView.setCompletedPosition(current_state).drawView();
@@ -78,41 +81,26 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-//        signUpBinding.btnDown.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(current_state > 0 ){
-//                    current_state -=1;
-//                    signUpBinding.stepsView.setCompletedPosition(current_state).drawView();
-//                }
-//                Log.d("current_state = ",current_state + " ");
-//
-//            }
-//        });
-
-
     }
 
     public boolean validSignUp1() {
         if (TextUtils.isEmpty(firstName.getText()) ||
-             TextUtils.isEmpty(lastName.getText()) ||
-             TextUtils.isEmpty(phone.getText())    ||
-             TextUtils.isEmpty(email.getText())    ||
-             TextUtils.isEmpty(gender.getText())    ||
-             TextUtils.isEmpty(address.getText()))
-        {
+                TextUtils.isEmpty(lastName.getText()) ||
+                TextUtils.isEmpty(phone.getText()) ||
+                TextUtils.isEmpty(email.getText()) ||
+                TextUtils.isEmpty(address.getText())) {
             Toast.makeText(SignUpActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return false;
-        }else{
-            if(isValidName(firstName.getText().toString()) && isValidName(lastName.getText().toString())){
+        } else {
+            if (isValidName(firstName.getText().toString()) && isValidName(lastName.getText().toString())) {
                 Toast.makeText(SignUpActivity.this, "Please enter a valid name containing only letters and spaces. Special characters and numbers are not allowed.", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if(isValidPhone(phone.getText().toString())){
+            if (isValidPhone(phone.getText().toString())) {
                 Toast.makeText(SignUpActivity.this, "The phone number you entered does not correct. Please enter a valid phone number starting with 84 or 0", Toast.LENGTH_SHORT).show();
                 return false;
             }
-            if(isValidEmail(firstName.getText().toString())){
+            if (isValidEmail(firstName.getText().toString())) {
                 Toast.makeText(SignUpActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
                 return false;
             }
@@ -121,11 +109,10 @@ public class SignUpActivity extends AppCompatActivity {
             registerDTO.setPhone(phone.getText().toString());
             registerDTO.setEmail(email.getText().toString());
             registerDTO.setAddress(address.getText().toString());
-            registerDTO.setGender(gender.getText().toString());
+            registerDTO.setGender(getGender());
             return true;
         }
     }
-
 
 
     public void init() {
@@ -134,6 +121,16 @@ public class SignUpActivity extends AppCompatActivity {
         phone = signUpBinding.tvPhone;
         email = signUpBinding.tvEmail;
         address = signUpBinding.tvAddress;
+        radioGenderGroup = signUpBinding.radioGenderGroup;
+    }
+
+    public String getGender() {
+        // get selected radio button from radioGroup
+        int selectedId = radioGenderGroup.getCheckedRadioButtonId();
+
+        // find the radiobutton by returned id
+        radioButton = findViewById(selectedId);
+        return radioButton.getText().toString();
     }
 
 
