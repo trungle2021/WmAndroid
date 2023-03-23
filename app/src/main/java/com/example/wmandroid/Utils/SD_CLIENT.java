@@ -1,30 +1,24 @@
 package com.example.wmandroid.Utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
-    public static final String DOMAIN_APP_API = "http://192.168.1.12:8080";
-    public static final String[] stepSignUp = {"(1)", "(2)","(3)"};
+    public static final String DOMAIN_APP_API = "http://192.168.104.45:8080";
+    public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
-
-
-    public static final String ROLE_ADMIN = "ROLE_ADMIN";
-    public static final String ROLE_SALE = "ROLE_SALE";
-    public static final String ROLE_ORGANIZE = "ROLE_ORGANIZE";
-    public static final String ROLE_CUSTOMER = "ROLE_CUSTOMER";
 //
 
     //LOGIN API
    public static final String api_customerLoginUrl = DOMAIN_APP_API + "/api/auth/customers/login";
    public static final  String api_customerRegisterUrl = DOMAIN_APP_API + "/api/auth/customers/register";
+   public static final  String api_customervalidPhoneEmail = DOMAIN_APP_API + "/api/auth/customers/register/validPhoneEmail";
     public static final String api_staffLoginUrl = DOMAIN_APP_API + "/api/auth/employees/login";
    public static final String api_staffRegisterUrl = DOMAIN_APP_API + "/api/auth/employees/create";
 
     //FORGOT PASSWORD CUSTOMER
-    public static final String api_processForgotPassword = DOMAIN_APP_API + "/api/auth/customers/processForgotPassword";
-    public static final String api_processChangePassword = DOMAIN_APP_API + "/api/auth/customers/processChangePassword";
+    public static final String api_process_forgot_password = DOMAIN_APP_API + "/api/auth/customers/processForgotPassword";
+    public static final String api_process_change_password = DOMAIN_APP_API + "/api/auth/customers/processChangePassword";
+    public static final String api_valid_otp = DOMAIN_APP_API + "/api/auth/customers/validToken";
+    public static final String api_update_password_mobile = DOMAIN_APP_API + "/api/auth/customers/updatePasswordMobile";
 
     //CUSTOMER
     public static final String api_customers_getAll = DOMAIN_APP_API + "/api/customers/all";

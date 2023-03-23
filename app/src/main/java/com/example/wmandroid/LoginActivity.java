@@ -8,17 +8,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.wmandroid.API.ApiClient;
 import com.example.wmandroid.API.Auth.AuthService;
 import com.example.wmandroid.DTO.JWTAuthResponse;
 import com.example.wmandroid.DTO.LoginDTO;
-import com.example.wmandroid.R;
 import com.example.wmandroid.databinding.ActivityLoginBinding;
-
-import org.json.JSONException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
