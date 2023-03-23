@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ForgotPasswordActivity">
+
+    <!-- Check your Mail -->
+    <TextView
+        android:id="@+id/check_your_"
+        android:layout_width="206dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="24dp"
+        android:text="Check your Mail"
+        android:layout_marginTop="150dp"
+        android:textSize="28sp"
+        android:textColor="#312E49"
+        android:gravity="top"
+        />
+
+
+
+
+    <!-- We,ve sent a 6-digit confirmation code to banstolakiran11@gmail.com. Make sure you enter correct code. -->
+    <TextView
+        android:id="@+id/tvSent"
+        android:layout_width="342dp"
+        android:layout_height="51dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:textSize="14sp"
+        android:textColor="#312E49"
+        android:gravity="top"
+        />
+
+    <!-- Frame 8 -->
+
+
+    <!-- drawable/frame_8.xml -->
+    <!-- Frame 1 -->
+    <LinearLayout
+        android:id="@+id/frame_1"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="50dp"
+        >
+
+        <EditText
+            android:id="@+id/otp1"
+            android:layout_width="48dp"
+            tools:ignore="LabelFor"
+            android:layout_height="65dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:clipToOutline="true"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:maxLength="1"
+            android:imeOptions="actionDone"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/checkotp_frame_8"
+            />
+        <EditText
+            android:id="@+id/otp2"
+            android:layout_width="48dp"
+            android:layout_height="65dp"
+            android:clipToOutline="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            tools:ignore="LabelFor"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:maxLength="1"
+            android:imeOptions="actionDone"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/checkotp_frame_8"
+            />
+        <EditText
+            android:id="@+id/otp3"
+            android:layout_width="48dp"
+            android:layout_height="65dp"
+            android:clipToOutline="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            tools:ignore="LabelFor"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:maxLength="1"
+            android:imeOptions="actionDone"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/checkotp_frame_8"
+            />
+        <EditText
+            android:id="@+id/otp4"
+            android:layout_width="48dp"
+            android:layout_height="65dp"
+            android:clipToOutline="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            tools:ignore="LabelFor"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:maxLength="1"
+            android:imeOptions="actionDone"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/checkotp_frame_8"
+            />
+        <EditText
+            android:id="@+id/otp5"
+            android:layout_width="48dp"
+            android:layout_height="65dp"
+            android:clipToOutline="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            tools:ignore="LabelFor"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:maxLength="1"
+            android:imeOptions="actionDone"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/checkotp_frame_8"
+            />
+        <EditText
+            android:id="@+id/otp6"
+            android:layout_width="48dp"
+            android:layout_height="65dp"
+            android:clipToOutline="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            tools:ignore="LabelFor"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            android:maxLength="1"
+            android:imeOptions="actionDone"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/checkotp_frame_8"
+            />
+    </LinearLayout>
+
+    <!-- Button -->
+    <Button
+        android:id="@+id/btnVerify"
+        android:layout_width="342dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="50dp"
+        android:text="Verify"
+        android:background="@drawable/checkotp_button"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="220dp"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="2dp"
+            android:textSize="16sp"
+            android:text="Don't receive code?"/>
+
+        <TextView
+            android:id="@+id/resendCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="3dp"
+            android:textSize="16sp"
+            android:textColor="#2805FF"
+            android:text="Resend Code"/>
+    </LinearLayout>
+
+</LinearLayout>
