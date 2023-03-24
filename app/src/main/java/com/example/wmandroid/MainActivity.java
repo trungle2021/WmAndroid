@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     MenuAdapter menuAdapter;
     List<VenueImgDTO> venueImgDTOList=new ArrayList<>();
     List<FoodImageDTO> foodImageDTOS=new ArrayList<>();
+    ApiClient apiClient = new ApiClient(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void callAPiMenuImg() {
-        MenuService menuService=ApiClient.createService(MenuService.class);
+        MenuService menuService=apiClient.createService(MenuService.class);
         menuService.foodImgAll().enqueue(new Callback<List<FoodImageDTO>>() {
             @Override
             public void onResponse(Call<List<FoodImageDTO>> call, Response<List<FoodImageDTO>> response) {
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void callApiVenueImg() {
-        VenueService venueService = ApiClient.createService(VenueService.class);
+        VenueService venueService = apiClient.createService(VenueService.class);
         venueService.venueImgAll().enqueue(new Callback<List<VenueImgDTO>>() {
             @Override
             public void onResponse(Call<List<VenueImgDTO>> call, Response<List<VenueImgDTO>> response) {

@@ -3,7 +3,7 @@ package com.example.wmandroid.Utils;
 public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
-    public static final String DOMAIN_APP_API = "http://192.168.104.45:8080";
+    public static final String DOMAIN_APP_API = "http://192.168.1.12:8080";
     public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
 //
@@ -21,8 +21,7 @@ public class SD_CLIENT {
     public static final String api_valid_otp = DOMAIN_APP_API + "/api/auth/customers/validToken";
     public static final String api_update_password_mobile = DOMAIN_APP_API + "/api/auth/customers/updatePasswordMobile";
 
-    //CUSTOMER
-    public static final String api_customers_getAll = DOMAIN_APP_API + "/api/customers/all";
+    //CUSTOMpublic static final String api_customers_getAll = DOMAIN_APP_API + "/api/customers/all";
     public static final String api_customers_getOne = DOMAIN_APP_API +  "/api/customers/";
     public static final String api_customers_getOne_RegisterCustomer = DOMAIN_APP_API +  "/api/auth/customers/getOne/RegisterCustomer/";
     public static final String api_customers_create = DOMAIN_APP_API + "/api/auth/customers/create";
