@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         prefs=LoginActivity.this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         edit=prefs.edit();
         String saveToken=response.body().getAccessToken();
-        edit.putString("token",saveToken);
+        edit.putString("auth_token",saveToken);
         Log.i("Login",saveToken);
         edit.commit();
     }

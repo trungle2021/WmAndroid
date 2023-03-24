@@ -24,6 +24,11 @@ import java.util.ArrayList;
 public class ApiClient {
     private static Retrofit retrofit;
     private static Activity activity1;
+
+    public ApiClient(Activity activity1) {
+        this.activity1 = activity1;
+    }
+
     private static final ArrayList<String> EXCLUDED_API = new ArrayList<String>(){
         {
             add(api_customerLoginUrl);
@@ -39,7 +44,6 @@ public class ApiClient {
 
 
     public static String getToken(Activity activity){
-        activity1 = activity;
         SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         String token = prefs.getString("auth_token","");
         return token;
