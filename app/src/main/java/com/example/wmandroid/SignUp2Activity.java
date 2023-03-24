@@ -1,9 +1,6 @@
 package com.example.wmandroid;
 
-import static com.example.wmandroid.Utils.Regex.isValidEmail;
-import static com.example.wmandroid.Utils.Regex.isValidName;
 import static com.example.wmandroid.Utils.Regex.isValidPassword;
-import static com.example.wmandroid.Utils.Regex.isValidPhone;
 import static com.example.wmandroid.Utils.Regex.isValidUsername;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +12,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +23,8 @@ import com.example.wmandroid.DTO.LoginDTO;
 import com.example.wmandroid.DTO.RegisterCustomerDTO;
 import com.example.wmandroid.Utils.SD_CLIENT;
 import com.example.wmandroid.databinding.ActivitySignUp2Binding;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -104,7 +102,25 @@ public class SignUp2Activity extends AppCompatActivity {
                             });
 
                         }else{
-
+                            if(response.code() == 400){
+                                String message = null;
+                                try {
+                                    message = ApiClient.getError(response).getMessage();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                if(message.contains("Username") && message.contains("Password")){
+                                    username.setError("Username is being used");
+                                    password.setError("Password is required");
+                                    return;
+                                }else if(message.contains("Username")){
+                                    username.setError("Username is being used");
+                                    return;
+                                }else if(message.contains("Password")){
+                                    password.setError("Password is required");
+                                    return;
+                                }
+                            }
                         }
                     }
 
