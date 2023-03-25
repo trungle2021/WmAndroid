@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding loginBinding;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,10 @@ public class LoginActivity extends AppCompatActivity {
                 loginDTO.setUsername(username);
                 loginDTO.setPassword(password);
 
-            AuthService authService = ApiClient.createService(AuthService.class);
+                ApiClient apiClient = new ApiClient(this);
+            AuthService authService = apiClient
+                    .createService(AuthService.class);
+
             authService.customerLogin(loginDTO).enqueue(new Callback<JWTAuthResponse>() {
                 @Override
                 public void onResponse(Call<JWTAuthResponse> call, Response<JWTAuthResponse> response) {

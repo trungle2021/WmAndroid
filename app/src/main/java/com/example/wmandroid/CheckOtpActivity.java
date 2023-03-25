@@ -65,7 +65,9 @@ public class CheckOtpActivity extends AppCompatActivity {
 
                 String otp_user = _otp1 +_otp2 +_otp3 +_otp4 + _otp5 + _otp6;
 
+
                 AuthService authService = ApiClient.createService(AuthService.class);
+
                 RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"),otp_user);
                 authService.validToken(requestBody).enqueue(new Callback<String>() {
                     @Override
