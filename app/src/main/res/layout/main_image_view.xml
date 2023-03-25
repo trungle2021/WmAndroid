@@ -2,5 +2,5 @@
 
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainImageView"
-    android:layout_width="@dimen/_410pxh"
+    android:layout_width="@dimen/_390pxh"
     android:layout_height="match_parent" />
