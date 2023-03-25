@@ -3,6 +3,7 @@ package com.example.wmandroid;
 import android.graphics.Color;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,67 +34,16 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding mainBinding;
-    VenueAdapter venueAdapter;
-    MenuAdapter menuAdapter;
-    List<VenueImgDTO> venueImgDTOList=new ArrayList<>();
-    List<FoodImageDTO> foodImageDTOS=new ArrayList<>();
-    ApiClient apiClient = new ApiClient(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
-        this.getSupportActionBar().hide();
-        initControl();
-        mainBinding.recycleViewVenue.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        mainBinding.recycleViewVenue.setAdapter(venueAdapter);
-        mainBinding.recycleViewMenu.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        mainBinding.recycleViewMenu.setAdapter(menuAdapter);
-        callApiVenueImg();
-        callAPiMenuImg();
-    }
-
-    private void callAPiMenuImg() {
-        MenuService menuService=apiClient.createService(MenuService.class);
-        menuService.foodImgAll().enqueue(new Callback<List<FoodImageDTO>>() {
-            @Override
-            public void onResponse(Call<List<FoodImageDTO>> call, Response<List<FoodImageDTO>> response) {
-                foodImageDTOS.clear();
-                foodImageDTOS.addAll(response.body());
-                menuAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<List<FoodImageDTO>> call, Throwable t) {
-                Log.d("MainActivity","Get All Food Img");
-            }
-        });
-    }
-
-    private void initControl() {
-        venueAdapter = new VenueAdapter(this);
-        menuAdapter = new MenuAdapter(this);
-        venueAdapter.setVenueData(venueImgDTOList);
-        menuAdapter.setMenuData(foodImageDTOS);
-
-    }
-
-    private void callApiVenueImg() {
-        VenueService venueService = apiClient.createService(VenueService.class);
-        venueService.venueImgAll().enqueue(new Callback<List<VenueImgDTO>>() {
-            @Override
-            public void onResponse(Call<List<VenueImgDTO>> call, Response<List<VenueImgDTO>> response) {
-                venueImgDTOList.clear();
-                venueImgDTOList.addAll(response.body());
-                venueAdapter.notifyDataSetChanged();
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<VenueImgDTO>> call, Throwable t) {
-                Log.d("MainActivity","Get All Venue Img");
-            }
-        });
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.food_and_venue_fragment, VenueAndFoodFragment.class, null)
+                .setReorderingAllowed(true)
+                .addToBackStack("name") // name can be null
+                .commit();
     }
 }
