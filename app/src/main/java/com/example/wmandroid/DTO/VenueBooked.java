@@ -9,8 +9,15 @@ public class VenueBooked {
     private Integer maxPeople;
     private Double price;
     private boolean active;
+    private String bookedDay;
 
+    public String getBookedDay() {
+        return bookedDay;
+    }
 
+    public void setBookedDay(String bookedDay) {
+        this.bookedDay = bookedDay;
+    }
 
     public String getVenueId() {
         return venueId;
