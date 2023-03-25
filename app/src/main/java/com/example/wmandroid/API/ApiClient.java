@@ -1,6 +1,9 @@
 package com.example.wmandroid.API;
 
+import static android.content.Intent.getIntent;
+
 import com.example.wmandroid.DTO.ErrorDetails;
+import com.example.wmandroid.LoginActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,12 +24,11 @@ import android.content.SharedPreferences;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ApiClient {
+public class ApiClient{
     private static Retrofit retrofit;
-    private static Activity activity1;
-
-    public ApiClient(Activity activity1) {
-        this.activity1 = activity1;
+    private static Activity activity;
+    public ApiClient(Activity activity) {
+        this.activity = activity;
     }
 
     private static final ArrayList<String> EXCLUDED_API = new ArrayList<String>(){
@@ -43,14 +45,13 @@ public class ApiClient {
     public static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
 
-    public static String getToken(Activity activity){
+    public static String getToken(){
         SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         String token = prefs.getString("auth_token","");
         return token;
     }
 
-    public void removeToken(Activity activity){
-        activity1 = activity;
+    public void removeToken(){
         SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.remove("auth_token"); // remove the token with the key "auth_token"
@@ -73,7 +74,7 @@ public class ApiClient {
 
             Request newRequest  = chain.request().newBuilder()
                     .addHeader("User-Agent","Android 11;Pixel 6")
-                    .addHeader("Authorization", "Bearer " + getToken(activity1))
+                    .addHeader("Authorization", "Bearer " + getToken())
                     .build();
             return chain.proceed(newRequest);
         }
