@@ -8,9 +8,5 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/food_and_venue_fragment"
-        android:name="com.example.wmandroid.VenueAndFoodFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 </LinearLayout>
