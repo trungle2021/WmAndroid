@@ -3,7 +3,7 @@ package com.example.wmandroid.Utils;
 public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
-    public static final String DOMAIN_APP_API = "http://192.168.1.12:8080";
+    public static final String DOMAIN_APP_API = "http://192.168.1.239:8080";
     public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
 //
@@ -41,6 +41,9 @@ public class SD_CLIENT {
     public static final String api_teams_update = DOMAIN_APP_API + "/api/teams/update";
     public static final String api_teams_delete = DOMAIN_APP_API + "/api/teams/delete/";
     public static final String api_getSummaryTeamOrganization = DOMAIN_APP_API + "/api/teams/getSummaryTeamOrganization";
+
+    public static final String api_venue_getAll_active="/api/venues/allactive";
+    public static final String api_order_getAll="/api/orders";
 
 
     //FOOD

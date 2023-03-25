@@ -16,6 +16,7 @@ import com.example.wmandroid.DTO.JWTAuthResponse;
 import com.example.wmandroid.DTO.LoginDTO;
 import com.example.wmandroid.databinding.ActivityLoginBinding;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             LoginDTO loginDTO = new LoginDTO();
                 loginDTO.setUsername(username);
                 loginDTO.setPassword(password);
+
             AuthService authService = ApiClient.createService(AuthService.class);
             authService.customerLogin(loginDTO).enqueue(new Callback<JWTAuthResponse>() {
                 @Override
@@ -85,8 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
 
 
     }

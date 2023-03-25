@@ -1,5 +1,6 @@
 package com.example.wmandroid;
 
+import android.content.Intent;
 import android.graphics.Color;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.anton46.stepsview.StepsView;
 import com.example.wmandroid.API.ApiClient;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding mainBinding;
     VenueAdapter venueAdapter;
     MenuAdapter menuAdapter;
+    Button btnCalendar;
     List<VenueImgDTO> venueImgDTOList=new ArrayList<>();
     List<FoodImageDTO> foodImageDTOS=new ArrayList<>();
     ApiClient apiClient = new ApiClient(this);
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mainBinding.recycleViewVenue.setAdapter(venueAdapter);
         mainBinding.recycleViewMenu.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         mainBinding.recycleViewMenu.setAdapter(menuAdapter);
+        calendarView();
         callApiVenueImg();
         callAPiMenuImg();
     }
@@ -73,9 +77,23 @@ public class MainActivity extends AppCompatActivity {
     private void initControl() {
         venueAdapter = new VenueAdapter(this);
         menuAdapter = new MenuAdapter(this);
+        //tao nut calendar
+        btnCalendar=findViewById(R.id.btnCalendar);
         venueAdapter.setVenueData(venueImgDTOList);
         menuAdapter.setMenuData(foodImageDTOS);
 
+
+    }
+    private void calendarView()
+    {
+
+        btnCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this,OrderCalendarActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void callApiVenueImg() {
