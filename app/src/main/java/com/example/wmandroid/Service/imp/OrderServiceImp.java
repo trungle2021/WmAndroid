@@ -13,11 +13,14 @@ import com.example.wmandroid.DTO.OrderDTO;
 import com.example.wmandroid.DTO.VenueBooked;
 import com.example.wmandroid.DTO.VenueDTO;
 
+import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class OrderServiceImp {
 
@@ -59,12 +62,12 @@ public class OrderServiceImp {
                 }
             }
         }
-        List<VenueBooked> responseList= getVenueNoBooked(venueList,bookeds);
+        List<VenueBooked> responseList= getVenueNoBooked(venueList,bookeds,date);
 
         return responseList;
     }
 
-public List<VenueBooked>getVenueNoBooked(List<VenueDTO> venues,List<VenueBooked> venueBookeds)
+public List<VenueBooked>getVenueNoBooked(List<VenueDTO> venues,List<VenueBooked> venueBookeds,String date)
 {
     List<VenueBooked> newList=new ArrayList<>();
     for (VenueDTO venue: venues) {
@@ -75,6 +78,7 @@ public List<VenueBooked>getVenueNoBooked(List<VenueDTO> venues,List<VenueBooked>
         venue1.setMaxPeople(venue.getMaxPeople());
         venue1.setPrice(venue.getPrice());
         venue1.setActive(venue.isActive());
+        venue1.setBookedDay(date);
         venue1.setBookedTime("Afternoon");
         newList.add(venue1);
         VenueBooked venue2=new VenueBooked();
@@ -84,6 +88,7 @@ public List<VenueBooked>getVenueNoBooked(List<VenueDTO> venues,List<VenueBooked>
         venue2.setMaxPeople(venue.getMaxPeople());
         venue2.setPrice(venue.getPrice());
         venue2.setActive(venue.isActive());
+        venue2.setBookedDay(date);
         venue2.setBookedTime("Evening");
         newList.add(venue2);
     }
@@ -105,4 +110,50 @@ public List<VenueBooked>getVenueNoBooked(List<VenueDTO> venues,List<VenueBooked>
     return availableList;
 }
 
+
+public OrderDTO getOrder(String strVenueId,String date,String time)
+{
+
+    DateTimeFormatter formatter= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    Integer venueId=Integer.parseInt(strVenueId);
+    String dateTime=new String();
+    if(time.equalsIgnoreCase("Afternoon"))
+    {
+        dateTime=date+" 12:00:00";
+    }
+    else if(time.equalsIgnoreCase("Evening"))
+    {
+        dateTime=date+" 17:00:00";
+    }
+    else{ return null;}
+    LocalDateTime orderDateTime = LocalDateTime.now();
+    String formattedNow = orderDateTime.format(formatter);
+    LocalDateTime happenDateTime = LocalDateTime.parse(dateTime, formatter);
+
+//        LocalTime timeHappen = happenDateTime.toLocalTime();
+//check status
+    Duration duration=Duration.between(orderDateTime,happenDateTime);
+    if(duration.toDays() >=30 && happenDateTime.isAfter(orderDateTime)) {
+        OrderDTO newOrder = new OrderDTO();
+        newOrder.setVenueId(venueId);
+        newOrder.setTimeHappen(dateTime);
+        //set cung test
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        CustomUserDetails customerDetail =(CustomUserDetails) authentication.getPrincipal();
+
+        newOrder.setCustomerId(1);
+        //
+        newOrder.setOrderStatus(orderStatusOrdered);
+        newOrder.setOrderDate(formattedNow);
+
+        return newOrder;
+    }
+    else{
+
+        return null;
+
+    }
+
+}
 }

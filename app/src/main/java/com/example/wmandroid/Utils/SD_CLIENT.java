@@ -46,6 +46,9 @@ public class SD_CLIENT {
 
     public static final String api_venue_getAll_active="/api/venues/allactive";
     public static final String api_order_getAll="/api/orders";
+    public static final String api_order_create="/api/orders/create";
+    public static final String api_order_getAll_food="/api/food/allactive";
+    public static final String api_order_getAll_service="/api/services/allactive";
 
 
     //FOOD
