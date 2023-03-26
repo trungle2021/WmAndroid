@@ -2,6 +2,7 @@ package com.example.wmandroid.API.Auth;
 
 import static com.example.wmandroid.Utils.SD_CLIENT.api_customerLoginUrl;
 import static com.example.wmandroid.Utils.SD_CLIENT.api_customerRegisterUrl;
+import static com.example.wmandroid.Utils.SD_CLIENT.api_customers_getOne_RegisterCustomer;
 import static com.example.wmandroid.Utils.SD_CLIENT.api_customervalidPhoneEmail;
 import static com.example.wmandroid.Utils.SD_CLIENT.api_process_change_password;
 import static com.example.wmandroid.Utils.SD_CLIENT.api_process_forgot_password;
@@ -19,7 +20,9 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface AuthService  {
 
@@ -38,7 +41,8 @@ public interface AuthService  {
 
     @POST(api_update_password_mobile)
     Call<String> updatePasswordMobile(@Body PasswordDTO passwordDTO);
-    @POST(api_process_change_password)
-    Call<List<LoginDTO>> processChangePassword(@Body PasswordDTO passwordDTO);
+
+    @GET(api_customers_getOne_RegisterCustomer)
+    Call<RegisterCustomerDTO> getOneCustomer(@Path("id") int id);
 
 }

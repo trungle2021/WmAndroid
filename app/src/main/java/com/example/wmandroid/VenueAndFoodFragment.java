@@ -46,15 +46,18 @@ public class VenueAndFoodFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view=inflater.inflate(R.layout.fragment_venue_and_food, container, false);
+
         RecyclerView recyclerViewVenue=view.findViewById(R.id.recycleViewVenue);
         RecyclerView recyclerViewMenu=view.findViewById(R.id.recycleViewMenu);
         recyclerViewVenue.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewMenu.setLayoutManager(new LinearLayoutManager(getActivity()));
-        initControl();
+        recyclerViewMenu.setAdapter(venueAdapter);
+        recyclerViewVenue.setAdapter(menuAdapter);
         callAPiMenuImg();
         callApiVenueImg();
+
         return view;
     }
     private void callAPiMenuImg() {
@@ -88,11 +91,5 @@ public class VenueAndFoodFragment extends Fragment {
             }
         });
     }
-    private void initControl() {
-        venueAdapter = new VenueAdapter(getActivity());
-        menuAdapter = new MenuAdapter(getActivity());
-        venueAdapter.setVenueData(venueImgDTOList);
-        menuAdapter.setMenuData(foodImageDTOS);
 
-    }
 }
