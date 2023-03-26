@@ -22,27 +22,13 @@ public class SD_CLIENT {
     public static final String api_valid_otp = DOMAIN_APP_API + "/api/auth/customers/validToken";
     public static final String api_update_password_mobile = DOMAIN_APP_API + "/api/auth/customers/updatePasswordMobile";
 
-    //CUSTOM
+    //CUSTOMER
      public static final String api_customers_getAll = DOMAIN_APP_API + "/api/customers/all";
     public static final String api_customers_getOne = DOMAIN_APP_API +  "/api/customers/";
+    public static final String api_customers_updateAvatar = DOMAIN_APP_API +  "/api/customers/updateAvatar";
     public static final String api_customers_getOne_RegisterCustomer = DOMAIN_APP_API +  "/api/auth/customers/getOne/RegisterCustomer/{id}";
     public static final String api_customers_create = DOMAIN_APP_API + "/api/auth/customers/create";
     public static final String api_customers_update = DOMAIN_APP_API +  "/api/auth/customers/update";
-
-    //EMPLOYEE AND TEAM API
-    public static final String api_employees_getAll = DOMAIN_APP_API + "/api/employees/all";
-    public static final String api_employees_getOne = DOMAIN_APP_API +  "/api/employees/";
-    public static final String api_employees_getOne_RegisterEmployee = DOMAIN_APP_API +  "/api/auth/employees/getOne/RegisterEmployee/";
-    public static final String api_employee_create = DOMAIN_APP_API + "/api/auth/employees/create";
-    public static final String api_employee_update = DOMAIN_APP_API +  "/api/auth/employees/update";
-    public static final String api_employee_delete = DOMAIN_APP_API +  "/api/auth/employees/delete/";
-    public static final String api_employee_findRoleByEmpID = DOMAIN_APP_API +  "/api/auth/employees/findRoleByEmployeeID/";
-
-    public static final String api_teams_getAll = DOMAIN_APP_API + "/api/teams/all";
-    public static final String api_teams_create = DOMAIN_APP_API + "/api/teams/create";
-    public static final String api_teams_update = DOMAIN_APP_API + "/api/teams/update";
-    public static final String api_teams_delete = DOMAIN_APP_API + "/api/teams/delete/";
-    public static final String api_getSummaryTeamOrganization = DOMAIN_APP_API + "/api/teams/getSummaryTeamOrganization";
 
     public static final String api_venue_getAll_active="/api/venues/allactive";
     public static final String api_order_getAll="/api/orders";

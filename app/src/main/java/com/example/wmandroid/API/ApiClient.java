@@ -20,6 +20,7 @@ import static com.example.wmandroid.Utils.SD_CLIENT.*;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -85,14 +86,18 @@ public class ApiClient{
     }
 
     public static ErrorDetails getError(retrofit2.Response response) throws IOException {
-        if (response.errorBody() != null) {
-            String errorJson = response.errorBody().string();
-            return new Gson().fromJson(errorJson, ErrorDetails.class);
-        }
+       try{
+           if (response.errorBody() != null) {
+               String errorJson = response.errorBody().string();
+               return new Gson().fromJson(errorJson, ErrorDetails.class);
+           }
+       }catch (Exception e){
+           Log.d("Exception Show Message",e.getMessage());
+       }
         return null;
     }
 
-    public String getValue(String name){
+    public static String getValue(String name){
         SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         String value = prefs.getString(name,"");
         return value;
