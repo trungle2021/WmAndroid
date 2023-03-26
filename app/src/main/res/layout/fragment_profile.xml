@@ -2,6 +2,7 @@
 <FrameLayout
     android:id="@+id/fragment_profile"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -10,6 +11,12 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".Fragment.ProfileFragment">
+=======
+    android:layout_height="wrap_content"
+    android:id="@+id/profileFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.ProfileFragment">
+>>>>>>> origin/develop
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

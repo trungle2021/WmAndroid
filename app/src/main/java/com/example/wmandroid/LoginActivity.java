@@ -19,6 +19,7 @@ import com.example.wmandroid.DTO.JWTAuthResponse;
 import com.example.wmandroid.DTO.LoginDTO;
 import com.example.wmandroid.databinding.ActivityLoginBinding;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,15 +45,21 @@ public class LoginActivity extends AppCompatActivity {
             LoginDTO loginDTO = new LoginDTO();
                 loginDTO.setUsername(username);
                 loginDTO.setPassword(password);
+
                 ApiClient apiClient = new ApiClient(this);
             AuthService authService = apiClient
                     .createService(AuthService.class);
+
             authService.customerLogin(loginDTO).enqueue(new Callback<JWTAuthResponse>() {
                 @Override
                 public void onResponse(Call<JWTAuthResponse> call, Response<JWTAuthResponse> response) {
                    if(response.isSuccessful()){
                        if(response.body().getAccessToken() != null){
                            storeToken(response); //store token in SharedPreferences
+<<<<<<< HEAD
+=======
+                           //After Login Success, move to Home Activity;
+>>>>>>> origin/develop
                            Intent intent = new Intent(LoginActivity.this, NavigateActivity.class);
                            startActivity(intent);
                        }else{
@@ -91,8 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
 
 
     }

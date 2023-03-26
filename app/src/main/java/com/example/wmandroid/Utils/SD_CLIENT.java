@@ -3,7 +3,9 @@ package com.example.wmandroid.Utils;
 public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
-    public static final String DOMAIN_APP_API = "http://192.168.97.49:8080";
+
+    public static final String DOMAIN_APP_API = "http://192.168.1.239:8080";
+
     public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
 //
@@ -27,6 +29,30 @@ public class SD_CLIENT {
     public static final String api_customers_create = DOMAIN_APP_API + "/api/auth/customers/create";
     public static final String api_customers_update = DOMAIN_APP_API +  "/api/auth/customers/update";
 
+<<<<<<< HEAD
+=======
+    //EMPLOYEE AND TEAM API
+    public static final String api_employees_getAll = DOMAIN_APP_API + "/api/employees/all";
+    public static final String api_employees_getOne = DOMAIN_APP_API +  "/api/employees/";
+    public static final String api_employees_getOne_RegisterEmployee = DOMAIN_APP_API +  "/api/auth/employees/getOne/RegisterEmployee/";
+    public static final String api_employee_create = DOMAIN_APP_API + "/api/auth/employees/create";
+    public static final String api_employee_update = DOMAIN_APP_API +  "/api/auth/employees/update";
+    public static final String api_employee_delete = DOMAIN_APP_API +  "/api/auth/employees/delete/";
+    public static final String api_employee_findRoleByEmpID = DOMAIN_APP_API +  "/api/auth/employees/findRoleByEmployeeID/";
+
+    public static final String api_teams_getAll = DOMAIN_APP_API + "/api/teams/all";
+    public static final String api_teams_create = DOMAIN_APP_API + "/api/teams/create";
+    public static final String api_teams_update = DOMAIN_APP_API + "/api/teams/update";
+    public static final String api_teams_delete = DOMAIN_APP_API + "/api/teams/delete/";
+    public static final String api_getSummaryTeamOrganization = DOMAIN_APP_API + "/api/teams/getSummaryTeamOrganization";
+
+    public static final String api_venue_getAll_active="/api/venues/allactive";
+    public static final String api_order_getAll="/api/orders";
+    public static final String api_order_create="/api/orders/create";
+    public static final String api_order_getAll_food="/api/food/allactive";
+    public static final String api_order_getAll_service="/api/services/allactive";
+
+>>>>>>> origin/develop
 
     //FOOD
     public static final String api_food_getAll = "/api/food/all";

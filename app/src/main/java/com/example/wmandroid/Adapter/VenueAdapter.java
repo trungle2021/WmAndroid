@@ -33,14 +33,15 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.ViewHolder> 
     @NonNull
     @Override
     public VenueAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        mainImageViewBinding=MainImageViewBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
-        return new ViewHolder(mainImageViewBinding.getRoot());
+        View v=LayoutInflater.from(context).inflate(R.layout.main_image_view,parent,false);
+        VenueAdapter.ViewHolder viewHolder=new ViewHolder(v);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull VenueAdapter.ViewHolder holder, int position) {
         VenueImgDTO venueImgDTO=venueImgDTOS.get(position);
-        Glide.with(context).load("data:image/png;base64," + venueImgDTO.getUrl()).into(mainImageViewBinding.mainImageView);
+        Glide.with(context).load("data:image/png;base64," + venueImgDTO.getUrl()).into(holder.imageView);
     }
 
     @Override
@@ -50,8 +51,12 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.ViewHolder> 
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView imageView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageView=itemView.findViewById(R.id.mainImageView);
+
         }
     }
 }

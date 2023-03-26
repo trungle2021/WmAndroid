@@ -45,4 +45,6 @@ public interface AuthService  {
     @GET(api_customers_getOne_RegisterCustomer)
     Call<RegisterCustomerDTO> getOneCustomer(@Path("id") int id);
 
+    //tao
+
 }
