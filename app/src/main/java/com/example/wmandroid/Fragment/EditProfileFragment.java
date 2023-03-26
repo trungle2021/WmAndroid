@@ -36,7 +36,7 @@ public class EditProfileFragment extends Fragment {
                 binding.tvEmail.setText(customerRegisterDTO.getEmail());
                 binding.tvAddress.setText(customerRegisterDTO.getAddress());
                 binding.tvUsername.setText(customerRegisterDTO.getUsername());
-                
+
             }
         });
 

@@ -4,7 +4,7 @@ public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
 
-    public static final String DOMAIN_APP_API = "http://192.168.1.239:8080";
+    public static final String DOMAIN_APP_API = "http://192.168.97.49:8080";
 
     public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
@@ -29,8 +29,6 @@ public class SD_CLIENT {
     public static final String api_customers_create = DOMAIN_APP_API + "/api/auth/customers/create";
     public static final String api_customers_update = DOMAIN_APP_API +  "/api/auth/customers/update";
 
-<<<<<<< HEAD
-=======
     //EMPLOYEE AND TEAM API
     public static final String api_employees_getAll = DOMAIN_APP_API + "/api/employees/all";
     public static final String api_employees_getOne = DOMAIN_APP_API +  "/api/employees/";
@@ -51,9 +49,6 @@ public class SD_CLIENT {
     public static final String api_order_create="/api/orders/create";
     public static final String api_order_getAll_food="/api/food/allactive";
     public static final String api_order_getAll_service="/api/services/allactive";
-
->>>>>>> origin/develop
-
     //FOOD
     public static final String api_food_getAll = "/api/food/all";
     //Venue Img

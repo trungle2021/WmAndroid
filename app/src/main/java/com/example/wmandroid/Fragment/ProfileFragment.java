@@ -40,6 +40,22 @@ public class ProfileFragment extends Fragment {
         binding.btnEditProfile.setOnClickListener(v->{
             replaceFragment(new EditProfileFragment());
         });
+
+
+        binding.bookingImgView
+                .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                ViewGroup parentView = (ViewGroup) view.getParent();
+//                parentView.removeView(view);
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack(ProfileFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout_navigate, new OrderCalendarFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return binding.getRoot();
 
     }
@@ -84,10 +100,6 @@ public class ProfileFragment extends Fragment {
             ApiClient.removeToken();
 
         });
-
-
-
-
         super.onViewCreated(view, savedInstanceState);
     }
 

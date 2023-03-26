@@ -30,8 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding loginBinding;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                    if(response.isSuccessful()){
                        if(response.body().getAccessToken() != null){
                            storeToken(response); //store token in SharedPreferences
-<<<<<<< HEAD
-=======
-                           //After Login Success, move to Home Activity;
->>>>>>> origin/develop
                            Intent intent = new Intent(LoginActivity.this, NavigateActivity.class);
                            startActivity(intent);
                        }else{
