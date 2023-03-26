@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.Claim;
+import com.auth0.android.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.wmandroid.API.ApiClient;
 import com.example.wmandroid.API.Auth.AuthService;
 import com.example.wmandroid.DTO.JWTAuthResponse;
@@ -25,8 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor edit;
     ActivityLoginBinding loginBinding;
-
-
 
 
     @Override
@@ -53,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                    if(response.isSuccessful()){
                        if(response.body().getAccessToken() != null){
                            storeToken(response); //store token in SharedPreferences
-                           //After Login Success, move to Home Activity;
                            Intent intent = new Intent(LoginActivity.this, NavigateActivity.class);
                            startActivity(intent);
                        }else{
@@ -101,8 +101,18 @@ public class LoginActivity extends AppCompatActivity {
         edit=prefs.edit();
         String saveToken=response.body().getAccessToken();
         edit.putString("auth_token",saveToken);
+        edit.putString("customerID",parseJWT(saveToken,"userID"));
         Log.i("Login",saveToken);
+        Log.i("customerID",saveToken);
         edit.commit();
+    }
+
+    private String parseJWT(String token,String name){
+        JWT jwt = new JWT(token);
+        Claim subscriptionMetaData = jwt.getClaim(name);
+        String parsedValue = subscriptionMetaData.asString();
+
+        return parsedValue;
     }
 
 }

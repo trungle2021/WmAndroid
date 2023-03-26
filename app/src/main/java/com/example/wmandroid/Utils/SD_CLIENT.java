@@ -4,7 +4,7 @@ public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
 
-    public static final String DOMAIN_APP_API = "http://192.168.1.239:8080";
+    public static final String DOMAIN_APP_API = "http://192.168.97.49:8080";
 
     public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
@@ -14,8 +14,7 @@ public class SD_CLIENT {
    public static final String api_customerLoginUrl = DOMAIN_APP_API + "/api/auth/customers/login";
    public static final  String api_customerRegisterUrl = DOMAIN_APP_API + "/api/auth/customers/register";
    public static final  String api_customervalidPhoneEmail = DOMAIN_APP_API + "/api/auth/customers/register/validPhoneEmail";
-    public static final String api_staffLoginUrl = DOMAIN_APP_API + "/api/auth/employees/login";
-   public static final String api_staffRegisterUrl = DOMAIN_APP_API + "/api/auth/employees/create";
+
 
     //FORGOT PASSWORD CUSTOMER
     public static final String api_process_forgot_password = DOMAIN_APP_API + "/api/auth/customers/processForgotPassword";
@@ -23,9 +22,10 @@ public class SD_CLIENT {
     public static final String api_valid_otp = DOMAIN_APP_API + "/api/auth/customers/validToken";
     public static final String api_update_password_mobile = DOMAIN_APP_API + "/api/auth/customers/updatePasswordMobile";
 
-    //CUSTOMpublic static final String api_customers_getAll = DOMAIN_APP_API + "/api/customers/all";
+    //CUSTOM
+     public static final String api_customers_getAll = DOMAIN_APP_API + "/api/customers/all";
     public static final String api_customers_getOne = DOMAIN_APP_API +  "/api/customers/";
-    public static final String api_customers_getOne_RegisterCustomer = DOMAIN_APP_API +  "/api/auth/customers/getOne/RegisterCustomer/";
+    public static final String api_customers_getOne_RegisterCustomer = DOMAIN_APP_API +  "/api/auth/customers/getOne/RegisterCustomer/{id}";
     public static final String api_customers_create = DOMAIN_APP_API + "/api/auth/customers/create";
     public static final String api_customers_update = DOMAIN_APP_API +  "/api/auth/customers/update";
 
@@ -49,8 +49,6 @@ public class SD_CLIENT {
     public static final String api_order_create="/api/orders/create";
     public static final String api_order_getAll_food="/api/food/allactive";
     public static final String api_order_getAll_service="/api/services/allactive";
-
-
     //FOOD
     public static final String api_food_getAll = "/api/food/all";
     //Venue Img
