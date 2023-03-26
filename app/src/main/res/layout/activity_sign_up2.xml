@@ -136,7 +136,6 @@
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:backgroundTint="#B1A6FA"
             android:fontFamily="sans-serif-thin"
             android:text="Create Account"
             android:textColor="#FFFFFF"

@@ -1,14 +1,22 @@
 package com.example.wmandroid.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +29,8 @@ import com.example.wmandroid.LoginActivity;
 import com.example.wmandroid.R;
 import com.example.wmandroid.databinding.FragmentProfileBinding;
 import com.google.gson.Gson;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,12 +85,14 @@ public class ProfileFragment extends Fragment {
                 String phone =response.body().getPhone() == null ? "" : response.body().getPhone();
                 String email =response.body().getEmail() == null ? "" : response.body().getEmail();
                 String address =response.body().getAddress() == null ? "" : response.body().getAddress();
+                String gender =response.body().getGender() == null ? "" : response.body().getGender();
 
                 binding.tvFullName.setText(firstName +" "+ lastName);
                 binding.tvPhone.setText(phone);
                 binding.tvEmail.setText(email);
                 binding.tvAddress.setText(address);
-
+                binding.tvGender.setText(gender);
+                binding.tvEmailUser.setText(email);
 
                 Gson gson = new Gson();
                 String json = gson.toJson(response.body());
@@ -91,7 +103,7 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onFailure(Call<RegisterCustomerDTO> call, Throwable t) {
-
+                Log.d(" Get customer info",t.getMessage());
             }
         });
         binding.btnLogout.setOnClickListener(v->{
@@ -100,7 +112,11 @@ public class ProfileFragment extends Fragment {
             ApiClient.removeToken();
 
         });
+        binding.cardView.setOnClickListener(v->{
+            replaceFragment(new ImagePreUploadFragment());
+        });
         super.onViewCreated(view, savedInstanceState);
+
     }
 
     public void replaceFragment(Fragment fragment){
