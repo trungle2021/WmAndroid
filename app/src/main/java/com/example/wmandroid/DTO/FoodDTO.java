@@ -14,5 +14,5 @@ public class FoodDTO {
     private boolean isActive;
     private Double price;
     private Set<MaterialDTO> materialsById;
-    private Set<FoodImageDTO> foodImagesById;
+//    private Set<FoodImageDTO> foodImagesById;
 }
