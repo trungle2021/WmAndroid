@@ -116,12 +116,11 @@ public class OrderCalendarFragment extends Fragment {
 
             view = inflater.inflate(R.layout.fragment_order_calendar, container, false);
             init();
-            Toast.makeText(getContext(), "View inflated for the first time", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "View inflated for the first time", Toast.LENGTH_SHORT).show();
             getVenue();
 
         return view;
     }
-
 
 
 
@@ -159,9 +158,9 @@ public class OrderCalendarFragment extends Fragment {
 
                         @Override
                         public void onResponse(Call<List<VenueDTO>> call, Response<List<VenueDTO>> response) {
-                            venueList= response.body();
-//                     String id=  String.valueOf(activeVenueDTOActive.get(0).getId());
-//                        Log.i("d",id);
+                            if(response.isSuccessful()) {
+                                venueList = response.body();
+                            }
                            }
 
                         @Override
@@ -176,7 +175,9 @@ public class OrderCalendarFragment extends Fragment {
                     homeService.getAllOrder().enqueue(new Callback<List<OrderDTO>>() {
                         @Override
                         public void onResponse(Call<List<OrderDTO>> call, Response<List<OrderDTO>> response) {
-                            orderList=response.body();
+                            if(response.isSuccessful()&& response.body()!=null) {
+                                orderList = response.body();
+                            }
                         }
                         @Override
                         public void onFailure(Call<List<OrderDTO>> call, Throwable t) {
@@ -185,18 +186,18 @@ public class OrderCalendarFragment extends Fragment {
                         }
                     });
 
-                    List<VenueBooked>bookeds= orderService.getVenuesBooked(date,venueList,orderList);
-
-                    Gson gson = new Gson();
-                    String jsonString = gson.toJson(bookeds);
-                    Log.i("msg",jsonString);
-                    //show venue
-
-
-                    adapter=new RealVenueAdapter(bookeds,activity,requireActivity().getSupportFragmentManager());
-                    listView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
+                    if(venueList!=null && orderList!=null) {
+                        List<VenueBooked> bookeds = orderService.getVenuesBooked(date, venueList, orderList);
+                        Gson gson = new Gson();
+                        String jsonString = gson.toJson(bookeds);
+                        Log.i("msg",jsonString);
+                        //show venue
+                        adapter=new RealVenueAdapter(bookeds,activity,requireActivity().getSupportFragmentManager());
+                        listView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
 //
+                    }
+
                 }
                 catch(Exception e){
                     Log.i("error",e.getMessage());
