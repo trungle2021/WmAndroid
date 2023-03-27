@@ -9,9 +9,14 @@ import static com.example.wmandroid.Utils.orderStatus.orderStatusOrdered;
 import static com.example.wmandroid.Utils.orderStatus.orderStatusRefund;
 import static com.example.wmandroid.Utils.orderStatus.orderStatusWarning;
 
+import android.util.Log;
+
+import com.example.wmandroid.API.ApiClient;
+import com.example.wmandroid.API.HomeService;
 import com.example.wmandroid.DTO.OrderDTO;
 import com.example.wmandroid.DTO.VenueBooked;
 import com.example.wmandroid.DTO.VenueDTO;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -21,6 +26,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class OrderServiceImp {
 
@@ -56,14 +65,17 @@ public class OrderServiceImp {
                 }
                 else if(timeHappen.isAfter(compareTime1) && timeHappen.isBefore(compareTime2)){
                     VenueBooked newbooked=new VenueBooked();
-
+                    newbooked.setVenueId(String.valueOf(order.getVenueId()));
                     newbooked.setBookedTime("Evening");
                     bookeds.add(newbooked);
                 }
             }
         }
         List<VenueBooked> responseList= getVenueNoBooked(venueList,bookeds,date);
+        Gson gson = new Gson();
+        String responseLists = gson.toJson(bookeds);
 
+        Log.i("booked",responseLists);
         return responseList;
     }
 
@@ -92,6 +104,7 @@ public List<VenueBooked>getVenueNoBooked(List<VenueDTO> venues,List<VenueBooked>
         venue2.setBookedTime("Evening");
         newList.add(venue2);
     }
+
     List<VenueBooked> availableList=new ArrayList<>();
 
     for (VenueBooked noBooked:newList)
@@ -107,6 +120,10 @@ public List<VenueBooked>getVenueNoBooked(List<VenueDTO> venues,List<VenueBooked>
         }
         if(!isBooked){availableList.add(noBooked);}
     }
+    Gson gson = new Gson();
+    String availableLists = gson.toJson(availableList);
+
+    Log.i("available",availableLists);
     return availableList;
 }
 
@@ -156,4 +173,6 @@ public OrderDTO getOrder(String strVenueId,String date,String time)
     }
 
 }
+
+
 }

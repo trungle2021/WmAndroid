@@ -65,8 +65,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-//                ViewGroup parentView = (ViewGroup) view.getParent();
-//                parentView.removeView(view);
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 fragmentManager.popBackStack(ProfileFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

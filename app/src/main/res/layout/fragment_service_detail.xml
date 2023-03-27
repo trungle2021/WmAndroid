@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.ServiceDetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:id="@+id/foodSpinnerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/calibri"
+            android:gravity="center"
+            android:text="Service Detail" />
+
+        <Spinner
+            android:id="@+id/serviceSpinner1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="15dp" />
+
+
+        <Spinner
+            android:id="@+id/serviceSpinner2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="15dp" />
+
+        <Spinner
+            android:id="@+id/serviceSpinner3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="15dp" />
+
+
+        <Button
+            android:id="@+id/btnAddService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Add Service Detail" />
+    </LinearLayout>
+
+
+</FrameLayout>

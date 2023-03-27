@@ -98,17 +98,21 @@ public class RealVenueAdapter  extends BaseAdapter {
                             @Override
                             public void onResponse(Call<OrderDTO> call, Response<OrderDTO> response) {
 
-                                if(response!=null){
+                                if(response!=null&& response.isSuccessful()){
 
                                     // Create a new Bundle to send date
+                                   OrderDTO createdOrderd= response.body();
                                     Bundle bundle = new Bundle();
-                                    bundle.putString("myDataKey", "Hello, World!");
+                                    String orderId=String.valueOf(createdOrderd.getId());
+                                    bundle.putString("orderId", orderId);
+                                    //tinh table
+
+                                    //
                                     BookingDetailFragment bookingDetailFragment = new BookingDetailFragment();
                                     // Set the arguments for the new fragment
                                     bookingDetailFragment.setArguments(bundle);
 
-// Retrieve the data from the arguments Bundle
-//                                    String myData = getArguments().getString("myDataKey");
+
                                 mFragmentManager.popBackStack(ProfileFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
                                 FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                                 fragmentTransaction.replace(R.id.frame_layout_navigate, bookingDetailFragment);
