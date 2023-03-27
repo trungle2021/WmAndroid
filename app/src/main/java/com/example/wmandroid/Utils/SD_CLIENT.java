@@ -4,7 +4,7 @@ public class SD_CLIENT {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
 
-    public static final String DOMAIN_APP_API = "http://172.16.3.106:8080";
+    public static final String DOMAIN_APP_API = "http://192.168.1.239:8080";
 
     public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
@@ -50,6 +50,7 @@ public class SD_CLIENT {
     public static final String api_order_getAll_food=DOMAIN_APP_API+"/api/food/allactive";
     public static final String api_order_getAll_service=DOMAIN_APP_API+"/api/services/allactive";
     public static final String api_order_getOne=DOMAIN_APP_API+"/api/orders/{id}";
+    public static final String api_order_update_order_detail=DOMAIN_APP_API+"/api/orders/update/order-detail/customer";
 
 
 

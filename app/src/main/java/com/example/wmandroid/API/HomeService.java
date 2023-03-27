@@ -18,6 +18,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface HomeService {
@@ -33,5 +34,7 @@ public interface HomeService {
     Call<List<FoodDTO>> getAllFood();
     @GET(api_order_getAll_service)
     Call<List<ServiceDTO>> getAllService();
+    @PUT(api_order_update_order_detail)
+    Call<String> updateOrderDetail(@Body RequestBody json);
 
 }
