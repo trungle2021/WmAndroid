@@ -13,7 +13,7 @@
         <ImageView
             android:layout_marginLeft="@dimen/_10pxh"
             android:id="@+id/menuDetailImg"
-            android:layout_width="@dimen/_200pxh"
+            android:layout_width="@dimen/_150pxh"
             android:layout_height="match_parent"
             android:src="@drawable/forgotpassword"/>
         <LinearLayout
