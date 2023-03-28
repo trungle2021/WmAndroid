@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                        if(response.body().getAccessToken() != null){
                            storeToken(response); //store token in SharedPreferences
                            //After Login Success, move to Home Activity;
-                           Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                           Intent intent = new Intent(LoginActivity.this, NavigateActivity.class);
                            startActivity(intent);
                        }else{
                            Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
