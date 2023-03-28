@@ -44,7 +44,7 @@ public class MenuDetailAdapter extends RecyclerView.Adapter<MenuDetailAdapter.Vi
         FoodDTO foodDTO = foodDTOList.get(position);
         holder.name.setText("Name: "+foodDTO.getFoodName());
         holder.type.setText("Type: "+foodDTO.getFoodType());
-        holder.price.setText("Price: "+String.valueOf(foodDTO.getPrice()));
+        holder.price.setText("Price($): "+(foodDTO.getPrice()));
         String firstPic="";
         Iterator<FoodImageDTO> iterator=foodDTO.getFoodImagesById().iterator();
         if(iterator.hasNext()){

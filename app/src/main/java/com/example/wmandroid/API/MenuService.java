@@ -1,6 +1,7 @@
 package com.example.wmandroid.API;
 
 import static com.example.wmandroid.Utils.SD_CLIENT.api_foodImg_getAll;
+import static com.example.wmandroid.Utils.SD_CLIENT.api_food_getAll;
 
 
 import com.example.wmandroid.DTO.FoodDTO;

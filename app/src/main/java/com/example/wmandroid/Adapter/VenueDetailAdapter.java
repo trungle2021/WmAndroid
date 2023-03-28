@@ -35,7 +35,7 @@ public class VenueDetailAdapter extends RecyclerView.Adapter<VenueDetailAdapter.
     @NonNull
     @Override
     public VenueDetailAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.venue_detail, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.venue_seemore, parent, false);
         ViewHolder viewHolder=new ViewHolder(v);
         return viewHolder;
     }
@@ -44,9 +44,9 @@ public class VenueDetailAdapter extends RecyclerView.Adapter<VenueDetailAdapter.
     public void onBindViewHolder(@NonNull VenueDetailAdapter.ViewHolder holder, int position) {
         VenueDTO venueDTO=venueDTOList.get(position);
         holder.name.setText("Name: "+venueDTO.getVenueName());
-        holder.min.setText("Min: "+String.valueOf(venueDTO.getMinPeople()));
-        holder.max.setText("Max: "+String.valueOf(venueDTO.getMaxPeople()));
-        holder.price.setText("Price: "+String.valueOf(venueDTO.getPrice()));
+        holder.min.setText("Min: "+(venueDTO.getMinPeople()));
+        holder.max.setText("Max: "+(venueDTO.getMaxPeople()));
+        holder.price.setText("Price($): "+(venueDTO.getPrice()));
         String firstPic="";
         Iterator<VenueImgDTO> iterator=venueDTO.getVenueImagesById().iterator();
         if(iterator.hasNext()){
