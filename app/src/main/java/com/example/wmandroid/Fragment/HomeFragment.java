@@ -3,6 +3,8 @@ package com.example.wmandroid.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.wmandroid.API.ApiClient;
 import com.example.wmandroid.API.MenuService;
@@ -34,6 +37,8 @@ public class HomeFragment extends Fragment {
     List<VenueImgDTO> venueImgDTOList=new ArrayList<>();
     List<FoodImageDTO> foodImageDTOS=new ArrayList<>();
     View view;
+    TextView seeMoreVenuesTV;
+    TextView seeMoreMenusTV;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -45,6 +50,8 @@ public class HomeFragment extends Fragment {
        view = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerView recyclerViewVenue=view.findViewById(R.id.recycleViewVenue);
         RecyclerView recyclerViewMenu=view.findViewById(R.id.recycleViewMenu);
+        seeMoreMenusTV=view.findViewById(R.id.seeMoreMenusBtn);
+        seeMoreVenuesTV=view.findViewById(R.id.seeMoreVenuesBtn);
         recyclerViewVenue.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewMenu.setLayoutManager(new LinearLayoutManager(getActivity()));
         venueAdapter = new VenueAdapter(getActivity());
@@ -55,8 +62,45 @@ public class HomeFragment extends Fragment {
         callApiVenueImg();
         venueAdapter.setVenueData(venueImgDTOList);
         menuAdapter.setMenuData(foodImageDTOS);
+        VenueDetail(seeMoreVenuesTV);
+        MenuDetail(seeMoreMenusTV);
         return view;
     }
+
+    private void MenuDetail( TextView menu) {
+        View.OnClickListener myOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Gọi phương thức chuyển sang Fragment khác
+                // Truyền vào Activity gốc, FragmentManager và Fragment muốn chuyển sang
+
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout_navigate, new MenuDetailFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        };
+        menu.setOnClickListener(myOnClickListener);
+    }
+
+    private void VenueDetail(TextView venue) {
+        View.OnClickListener myOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Gọi phương thức chuyển sang Fragment khác
+                // Truyền vào Activity gốc, FragmentManager và Fragment muốn chuyển sang
+
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout_navigate, new VenueDetailFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        };
+        venue.setOnClickListener(myOnClickListener);
+    }
+
     private void callAPiMenuImg() {
         MenuService menuService= ApiClient.createService(MenuService.class);
         menuService.foodImgAll().enqueue(new Callback<List<FoodImageDTO>>() {

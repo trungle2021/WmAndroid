@@ -66,6 +66,9 @@ public class SD_CLIENT {
     //FOOD
 
     public static final String api_food_getAll = "/api/food/all";
+    //Venue
+    public static final String api_venue_getAll=DOMAIN_APP_API+"/api/venues/all";
+
     //Venue Img
     public static final String api_venueImg_getAll=DOMAIN_APP_API+"/api/venuesImgs/all";
     //Food Img
