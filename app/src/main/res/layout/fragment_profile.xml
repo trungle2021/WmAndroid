@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
+    android:id="@+id/fragment_profile"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.ProfileFragment">
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".Fragment.ProfileFragment">
+
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#f5f5f5"
-            android:paddingBottom="85dp"
-            >
+            android:paddingBottom="80dp">
 
 
             <ImageView
@@ -25,15 +30,25 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/top_background" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/profile" />
+                android:layout_centerHorizontal="true"
+                app:cardCornerRadius="100dp"
+                android:layout_marginTop="32dp"
+                >
+
+                <ImageView
+                    android:id="@+id/avatarImgView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/upload1" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/tvFullName"
@@ -44,10 +59,10 @@
                 android:textColor="#ffffff"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="@+id/cardView"
                 app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintStart_toStartOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <TextView
                 android:id="@+id/tvEmailUser"
@@ -65,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="70dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/white_background"
                 android:orientation="vertical"
@@ -89,42 +104,14 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/settingImgView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            app:srcCompat="@drawable/ic_1" />
-
-                        <TextView
-                            android:id="@+id/tvSetting"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="Settings"
-                            android:textAlignment="center"
-                            android:textColor="#000000"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/top_button_background"
-                        android:elevation="5dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/notiImgView"
+                            android:id="@+id/bookingImgView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             app:srcCompat="@drawable/ic_2" />
 
                         <TextView
-                            android:id="@+id/tvNotification"
+                            android:id="@+id/tvBooking"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -164,33 +151,9 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Password:"
-                        android:textColor="#5917e1"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/tvChangePassword"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Change"
-                        android:textAlignment="viewEnd"
-                        android:textColor="@color/blue"
-                        android:textSize="18sp" />
-                </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView2"
+                    android:id="@+id/appCompattvAvatar"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
@@ -217,6 +180,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="987-4563-12"
+                        android:layout_marginRight="10dp"
                         android:textAlignment="viewEnd"
                         android:textColor="#5b5b5b"
                         android:textSize="18sp" />
@@ -250,6 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="123-123-1234"
+                        android:layout_marginRight="10dp"
                         android:textAlignment="viewEnd"
                         android:textColor="#5b5b5b"
                         android:textSize="18sp" />
@@ -283,6 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="NY-Street 22- no74"
+                        android:layout_marginRight="10dp"
                         android:textAlignment="viewEnd"
                         android:textColor="#5b5b5b"
                         android:textSize="18sp" />
@@ -299,6 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:paddingBottom="10dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -314,7 +281,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="9998887775"
+                        android:text="Male"
+                        android:layout_marginRight="10dp"
                         android:textAlignment="viewEnd"
                         android:textColor="#5b5b5b"
                         android:textSize="18sp" />
@@ -322,29 +290,51 @@
 
 
 
-
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnEditProfile"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/button_background"
-                android:gravity="center"
-                android:text="Edit Profile"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
 
+                >
+                <Button
+                    android:id="@+id/btnEditProfile"
+                    android:layout_width="363dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/button_background"
+                    android:gravity="center"
+                    android:text="Edit Profile"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="24dp"
+                    />
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="363dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/button_logout"
+                    android:gravity="center"
+                    android:text="Logout"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-</ScrollView>
+    </ScrollView>
+</FrameLayout>

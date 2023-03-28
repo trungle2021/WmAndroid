@@ -126,7 +126,6 @@
             android:textColor="#FFFFFF"
             android:textSize="16dp"
             android:textStyle="bold"
-            android:backgroundTint="#B1A6FA"
             tools:ignore="SmallSp">
 
         </Button>

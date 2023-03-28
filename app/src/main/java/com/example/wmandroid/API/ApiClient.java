@@ -20,6 +20,7 @@ import static com.example.wmandroid.Utils.SD_CLIENT.*;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +30,9 @@ public class ApiClient{
     private static Activity activity;
     public ApiClient(Activity activity) {
         this.activity = activity;
+    }
+
+    public ApiClient() {
     }
 
     private static final ArrayList<String> EXCLUDED_API = new ArrayList<String>(){
@@ -43,21 +47,6 @@ public class ApiClient{
         }
     };
     public static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-
-
-    public static String getToken(){
-        SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        String token = prefs.getString("auth_token","");
-        return token;
-    }
-
-    public void removeToken(){
-        SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.remove("auth_token"); // remove the token with the key "auth_token"
-        editor.apply(); // save the changes
-    }
-
 
     private static OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
         @Override
@@ -97,12 +86,36 @@ public class ApiClient{
     }
 
     public static ErrorDetails getError(retrofit2.Response response) throws IOException {
-        if (response.errorBody() != null) {
-            String errorJson = response.errorBody().string();
-            return new Gson().fromJson(errorJson, ErrorDetails.class);
-        }
+       try{
+           if (response.errorBody() != null) {
+               String errorJson = response.errorBody().string();
+               return new Gson().fromJson(errorJson, ErrorDetails.class);
+           }
+       }catch (Exception e){
+           Log.d("Exception Show Message",e.getMessage());
+       }
         return null;
     }
+
+    public static String getValue(String name){
+        SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        String value = prefs.getString(name,"");
+        return value;
+    }
+
+    public static void removeToken(){
+        SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("auth_token"); // remove the token with the key "auth_token"
+        editor.apply(); // save the changes
+    }
+
+    public static String getToken(){
+        SharedPreferences prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        String token = prefs.getString("auth_token","");
+        return token;
+    }
+
 
 
 
