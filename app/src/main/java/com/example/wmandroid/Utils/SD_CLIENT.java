@@ -8,8 +8,6 @@ public class SD_CLIENT {
 
 
     public static final String[] stepSignUp = {"Step 1", "Step 2", "Create"};
-
-
 //
 
     //LOGIN API
