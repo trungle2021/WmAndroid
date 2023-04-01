@@ -62,6 +62,9 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation 'joda-time:joda-time:2.10.13'
 }
 
 

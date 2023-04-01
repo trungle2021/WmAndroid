@@ -25,6 +25,7 @@ public class NavigateActivity extends AppCompatActivity {
         navigateBinding = ActivityNavigateBinding.inflate(getLayoutInflater());
 
         setContentView(navigateBinding.getRoot());
+        getSupportActionBar().hide();
         replaceFragment(new HomeFragment());
 
         navigateBinding.bottomNavigationView.setOnItemSelectedListener(item -> {

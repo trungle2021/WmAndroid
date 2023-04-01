@@ -43,6 +43,7 @@ public class SignUp2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         signUp2Binding = ActivitySignUp2Binding.inflate(getLayoutInflater());
         setContentView(signUp2Binding.getRoot());
+        getSupportActionBar().hide();
         init();
         Intent intent = getIntent();
         RegisterCustomerDTO registerDTO = (RegisterCustomerDTO) intent.getSerializableExtra("personalInfo");

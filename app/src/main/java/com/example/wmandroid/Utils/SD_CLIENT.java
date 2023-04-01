@@ -5,7 +5,7 @@ public class SD_CLIENT {
 
 
 
-    public static final String DOMAIN_APP_API = "http://192.168.97.49:8080";
+    public static final String DOMAIN_APP_API = "http://192.168.1.13:8080";
 
     public static final String[] stepSignUp = {"Step 1", "Step 2","Create"};
 
@@ -53,16 +53,9 @@ public class SD_CLIENT {
     public static final String api_order_getAll_food=DOMAIN_APP_API+"/api/food/allactive";
     public static final String api_order_getAll_service=DOMAIN_APP_API+"/api/services/allactive";
     public static final String api_order_getOne=DOMAIN_APP_API+"/api/orders/{id}";
+    public static final String api_order_getAllOrderByCustomer=DOMAIN_APP_API+"/api/orders/bycustomerd/{id}";
 
 
-
-
-
-    public static final String api_venue_getAll_active="/api/venues/allactive";
-    public static final String api_order_getAll="/api/orders";
-    public static final String api_order_create="/api/orders/create";
-    public static final String api_order_getAll_food="/api/food/allactive";
-    public static final String api_order_getAll_service="/api/services/allactive";
     //FOOD
 
     public static final String api_food_getAll = "/api/food/all";

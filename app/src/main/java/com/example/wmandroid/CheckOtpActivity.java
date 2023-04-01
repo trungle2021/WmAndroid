@@ -39,7 +39,9 @@ public class CheckOtpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkOtpBinding = ActivityCheckOtpBinding.inflate(getLayoutInflater());
+
         setContentView(checkOtpBinding.getRoot());
+        getSupportActionBar().hide();
         Intent intent = getIntent();
          email = intent.getExtras().getString("email");
          checkEmailExists(email);

@@ -70,6 +70,18 @@ public class ProfileFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        binding.orderImgView.setOnClickListener(v->{
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            fragmentManager.popBackStack(ProfileFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout_navigate, new MyOrderFragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
+
+
+
         return binding.getRoot();
 
     }

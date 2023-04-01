@@ -34,4 +34,7 @@ public interface HomeService {
     @GET(api_order_getAll_service)
     Call<List<ServiceDTO>> getAllService();
 
+    @GET(api_order_getAllOrderByCustomer)
+    Call<List<OrderDTO>> getAllOrderByCustomer(@Path("id") int id);
+
 }

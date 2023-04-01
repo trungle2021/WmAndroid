@@ -51,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         signUpBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(signUpBinding.getRoot());
+        getSupportActionBar().hide();
         init();
 
         stepsView = signUpBinding.stepsView;
