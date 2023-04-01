@@ -84,7 +84,7 @@ public class BookingDetailFragment extends Fragment {
     View view;
     OrderDTO myOrder;
     List<FoodDTO> foodList;
-    private FragmentManager mFragmentManager;
+//    private FragmentManager mFragmentManager;
     Spinner foodSpinerStater;
     Spinner foodSpinerMain1;
     Spinner foodSpinerMain2;
@@ -128,7 +128,7 @@ public class BookingDetailFragment extends Fragment {
             homeService.getOnebyId(orderId).enqueue(new Callback<OrderDTO>() {
                 @Override
                 public void onResponse(Call<OrderDTO> call, Response<OrderDTO> response) {
-                    if(response.isSuccessful()&&response!=null){
+                    if(response.isSuccessful() && response!=null){
                     myOrder=response.body();
                         min=myOrder.getVenues().getMinPeople()/10;
                         max=myOrder.getVenues().getMaxPeople()/10;
@@ -136,6 +136,7 @@ public class BookingDetailFragment extends Fragment {
                     String jsonString = gson.toJson(foodList);
                     Log.i("response", jsonString);
                 }
+
                 }
 
                 @Override
@@ -148,7 +149,7 @@ public class BookingDetailFragment extends Fragment {
             homeService.getAllFood().enqueue(new Callback<List<FoodDTO>>() {
                 @Override
                 public void onResponse(Call<List<FoodDTO>> call, Response<List<FoodDTO>> response) {
-                    if (response.isSuccessful()) {
+                    if (response.isSuccessful() && response.body()!=null) {
                         foodList = response.body();
                         FoodDTO defaultFood=new FoodDTO();
                         defaultFood.setFoodName("none");
@@ -163,8 +164,9 @@ public class BookingDetailFragment extends Fragment {
                         // Continue to the next step
                         // Create the spinner adapter for each food type
                         Gson gson=new Gson();
-                        FoodSninperAdapter adapterStarter = new FoodSninperAdapter(getContext(), R.layout.food_detail_snipper, foodListStarter);foodSpinerStater.setAdapter(adapterStarter);
+                        FoodSninperAdapter adapterStarter = new FoodSninperAdapter(getContext(), R.layout.food_detail_snipper, foodListStarter);
                         foodSpinerStater.setAdapter(adapterStarter);
+
                         FoodSninperAdapter adapterMain = new FoodSninperAdapter(getContext(), R.layout.food_detail_snipper, foodListMain);
                         foodSpinerMain1.setAdapter(adapterMain);
                         foodSpinerMain2.setAdapter(adapterMain);
@@ -436,26 +438,34 @@ public class BookingDetailFragment extends Fragment {
                                     myMap.put("table", table);
                                     String jsonString = gson.toJson(foodList);
                                     String map = gson.toJson(myMap);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("data", map);
-                                    ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
-                                    // Set the arguments for the new fragment
-                                    serviceDetailFragment.setArguments(bundle);
 
+//                                    ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
+//                                    // Set the arguments for the new fragment
+//                                    getParentFragmentManager().setFragmentResult("dataFromBookingDetail",bundle1);
+
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("myData", map);
+
+// Create a new FragmentB object and set the arguments to the Bundle
+                                    ServiceDetailFragment fragmentService = new ServiceDetailFragment();
+
+                                    fragmentService.setArguments(bundle);
+
+// Navigate to FragmentB using a FragmentTransaction
+                                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                    fragmentTransaction.replace(R.id.frame_layout_navigate,fragmentService);
+                                    fragmentTransaction.addToBackStack(null);
+                                    fragmentTransaction.commit();
 
                                     Log.i("response", jsonString);
                                     Log.i("map", map);
 
-                                    mFragmentManager.popBackStack(ProfileFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                                    fragmentTransaction.replace(R.id.frame_layout_navigate,serviceDetailFragment);
-                                    fragmentTransaction.addToBackStack(null);
-                                    fragmentTransaction.commit();
                                 }
                                 else{
 
-                                    Toast.makeText(getContext(), "Table must from "+ min +"to"+max+"!And more than 6 dics!", Toast.LENGTH_SHORT).show();
-                                    Log.i("table error","Table must from "+min +"to"+max );
+                                    Toast.makeText(getContext(), "Table must from "+ min +" to "+max+"! And more than 6 dish!", Toast.LENGTH_SHORT).show();
+                                    Log.i("table error","Table must from "+min +" to "+max );
                                 }
                             }
                         });

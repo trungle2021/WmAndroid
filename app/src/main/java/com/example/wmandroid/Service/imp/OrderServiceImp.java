@@ -158,8 +158,8 @@ public OrderDTO getOrder(String strVenueId,String date,String time)
         //set cung test
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        CustomUserDetails customerDetail =(CustomUserDetails) authentication.getPrincipal();
-
-        newOrder.setCustomerId(1);
+        Integer customerId= Integer.parseInt(ApiClient.getValue("customerID"));
+        newOrder.setCustomerId(customerId);
         //
         newOrder.setOrderStatus(orderStatusOrdered);
         newOrder.setOrderDate(formattedNow);

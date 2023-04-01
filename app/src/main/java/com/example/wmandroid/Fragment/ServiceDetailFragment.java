@@ -2,9 +2,13 @@ package com.example.wmandroid.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +36,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,15 +81,14 @@ public class ServiceDetailFragment extends Fragment {
     }
 
     View view;
-
-
-
     private FragmentManager mFragmentManager;
     Spinner serviceSpiner1;
     Spinner serviceSpiner2;
     Spinner serviceSpiner3;
     List<ServiceDTO> serviceList;
     Button btnAddService;
+    Map<String, Object> map;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,12 +105,14 @@ public class ServiceDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         view=inflater.inflate(R.layout.fragment_service_detail, container, false);
         init();
-        String data = getArguments().getString("data");
+        String data = getArguments().getString("myData");
         Gson gson = new Gson();
-        Type type = new TypeToken<Map<String, Object>>(){}.getType();
-        Map<String, Object> map = gson.fromJson(data, type);
 
-        Log.i("data",data);
+        Type type = new TypeToken<Map<String, Object>>(){}.getType();
+        map = gson.fromJson(data, type);
+
+
+
 
         HomeService homeService= ApiClient.createService(HomeService.class);
         homeService.getAllService().enqueue(new Callback<List<ServiceDTO>>() {
@@ -255,6 +262,28 @@ public class ServiceDetailFragment extends Fragment {
                             Log.i("lastMap", jsonString);
 
                             //call API
+                            RequestBody requestBody=RequestBody.create(MediaType.parse("application/json"),jsonString);
+                            homeService.updateOrderDetail(requestBody).enqueue(new Callback<String>() {
+                                @Override
+                                public void onResponse(Call<String> call, Response<String> response) {
+                                    if(response.isSuccessful())
+                                    {
+                                        Toast.makeText(getContext(), "Choose Food and Service Successful!Congratulation!", Toast.LENGTH_SHORT).show();
+
+                                        ProfileFragment fragmentProfile=new ProfileFragment();
+                                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                        fragmentTransaction.replace(R.id.frame_layout_navigate,fragmentProfile);
+                                        fragmentTransaction.addToBackStack(null);
+                                        fragmentTransaction.commit();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<String> call, Throwable t) {
+
+                                }
+                            });
                         }
                     });
 
@@ -285,8 +314,8 @@ public class ServiceDetailFragment extends Fragment {
     public void init()
     {
         serviceSpiner1 = view.findViewById(R.id.serviceSpinner1);
-        serviceSpiner1=view.findViewById(R.id.serviceSpinner2);
-        serviceSpiner1=view.findViewById(R.id.serviceSpinner3);
+        serviceSpiner2=view.findViewById(R.id.serviceSpinner2);
+        serviceSpiner3=view.findViewById(R.id.serviceSpinner3);
 
         btnAddService=view.findViewById(R.id.btnAddService);
 
