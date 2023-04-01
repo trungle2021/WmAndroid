@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                    if(response.isSuccessful()){
                        if(response.body().getAccessToken() != null){
                            storeToken(response); //store token in SharedPreferences
+
                            Intent intent = new Intent(LoginActivity.this, NavigateActivity.class);
                            startActivity(intent);
                        }else{
