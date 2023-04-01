@@ -6,6 +6,7 @@ public class SD_CLIENT {
 
     public static final String DOMAIN_APP_API = "http://192.168.86.23:8080";
 
+
     public static final String[] stepSignUp = {"Step 1", "Step 2", "Create"};
 
 //
@@ -46,13 +47,14 @@ public class SD_CLIENT {
     public static final String api_teams_delete = DOMAIN_APP_API + "/api/teams/delete/";
     public static final String api_getSummaryTeamOrganization = DOMAIN_APP_API + "/api/teams/getSummaryTeamOrganization";
 
-    public static final String api_venue_getAll_active = DOMAIN_APP_API + "/api/venues/allactive";
-    public static final String api_order_getAll = DOMAIN_APP_API + "/api/orders";
-    public static final String api_order_create = DOMAIN_APP_API + "/api/orders/create";
-    public static final String api_order_getAll_food = DOMAIN_APP_API + "/api/food/allactive";
-    public static final String api_order_getAll_service = DOMAIN_APP_API + "/api/services/allactive";
-    public static final String api_order_getOne = DOMAIN_APP_API + "/api/orders/{id}";
-    public static final String api_order_update_order_detail = DOMAIN_APP_API + "/api/orders/update/order-detail/customer";
+    public static final String api_venue_getAll_active=DOMAIN_APP_API+"/api/venues/allactive";
+    public static final String api_order_getAll=DOMAIN_APP_API+"/api/orders";
+    public static final String api_order_create=DOMAIN_APP_API+"/api/orders/create";
+    public static final String api_order_getAll_food=DOMAIN_APP_API+"/api/food/allactive";
+    public static final String api_order_getAll_service=DOMAIN_APP_API+"/api/services/allactive";
+    public static final String api_order_getOne=DOMAIN_APP_API+"/api/orders/{id}";
+    public static final String api_order_getAllOrderByCustomer=DOMAIN_APP_API+"/api/orders/bycustomerd/{id}";
+
 
 
     //FOOD

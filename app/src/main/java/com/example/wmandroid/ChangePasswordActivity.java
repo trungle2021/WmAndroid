@@ -36,6 +36,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         setContentView(changePasswordBinding.getRoot());
         password = changePasswordBinding.tvPassword;
         cpassword = changePasswordBinding.tvConfirmPassword;
+        getSupportActionBar().hide();
 
         changePasswordBinding.btnResetPassword.setOnClickListener(v->{
             if(TextUtils.isEmpty(password.getText().toString()) || TextUtils.isEmpty(cpassword.getText().toString())){

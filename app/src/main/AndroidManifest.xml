@@ -15,6 +15,9 @@
         android:theme="@style/Theme.WmAndroid"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+
+
         <activity
             android:name=".NavigateActivity"
             android:exported="true">

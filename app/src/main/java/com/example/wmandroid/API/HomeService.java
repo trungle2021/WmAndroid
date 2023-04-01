@@ -37,4 +37,7 @@ public interface HomeService {
     @PUT(api_order_update_order_detail)
     Call<String> updateOrderDetail(@Body RequestBody json);
 
+    @GET(api_order_getAllOrderByCustomer)
+    Call<List<OrderDTO>> getAllOrderByCustomer(@Path("id") int id);
+
 }

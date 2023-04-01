@@ -3,6 +3,7 @@ package com.example.wmandroid.Fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +70,18 @@ public class ProfileFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        binding.orderImgView.setOnClickListener(v->{
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            fragmentManager.popBackStack(ProfileFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout_navigate, new MyOrderFragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
+
+
+
         return binding.getRoot();
 
     }
@@ -88,6 +102,7 @@ public class ProfileFragment extends Fragment {
                 String email =response.body().getEmail() == null ? "" : response.body().getEmail();
                 String address =response.body().getAddress() == null ? "" : response.body().getAddress();
                 String gender =response.body().getGender() == null ? "" : response.body().getGender();
+                String avatar =response.body().getAvatar() == null ? "" : response.body().getAvatar();
 
                 binding.tvFullName.setText(firstName +" "+ lastName);
                 binding.tvPhone.setText(phone);
@@ -95,6 +110,11 @@ public class ProfileFragment extends Fragment {
                 binding.tvAddress.setText(address);
                 binding.tvGender.setText(gender);
                 binding.tvEmailUser.setText(email);
+                if(!avatar.equals("")){
+                    byte[] bytes = Base64.decode(avatar,Base64.DEFAULT);
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                    binding.avatarImgView.setImageBitmap(bitmap);
+                }
 
                 Gson gson = new Gson();
                 String json = gson.toJson(response.body());

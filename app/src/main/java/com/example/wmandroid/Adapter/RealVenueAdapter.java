@@ -75,7 +75,7 @@ public class RealVenueAdapter  extends BaseAdapter {
         ((TextView)myView.findViewById(R.id.tvtimeKhang)).setText(venueBooked.getBookedTime());
         ((TextView)myView.findViewById(R.id.venueIdKhang)).setText(venueBooked.getVenueId());
 
-    int newPosition=i;
+        int newPosition=i;
 
         myView.findViewById(R.id.btnCreateKhang).setOnClickListener(new View.OnClickListener() {
             @Override
