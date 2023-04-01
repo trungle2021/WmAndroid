@@ -8,7 +8,6 @@ public class SD_CLIENT {
 
 
     public static final String[] stepSignUp = {"Step 1", "Step 2", "Create"};
-
 //
 
     //LOGIN API
@@ -46,6 +45,7 @@ public class SD_CLIENT {
     public static final String api_teams_update = DOMAIN_APP_API + "/api/teams/update";
     public static final String api_teams_delete = DOMAIN_APP_API + "/api/teams/delete/";
     public static final String api_getSummaryTeamOrganization = DOMAIN_APP_API + "/api/teams/getSummaryTeamOrganization";
+
 
     public static final String api_venue_getAll_active=DOMAIN_APP_API+"/api/venues/allactive";
     public static final String api_order_getAll=DOMAIN_APP_API+"/api/orders";
