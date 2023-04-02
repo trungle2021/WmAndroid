@@ -70,19 +70,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             return;
         }
 
-        String dateBooking = orderDTO.getTimeHappen(); // Example datetime string
-        String dateHappen = orderDTO.getTimeHappen(); // Example datetime string
+        String dateString = orderDTO.getTimeHappen(); // Example datetime string
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
         try {
-            Date _dateBooking = inputFormat.parse(dateBooking);
-            Date _dateHappen= inputFormat.parse(dateHappen);
+            Date date = inputFormat.parse(dateString);
             SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            String output_dateBooking = outputFormat.format(_dateBooking);
-            String output_dateHappen = outputFormat.format(_dateHappen);
-
-            holder.bookingDate.setText("Booking Date: " + output_dateBooking);
-            holder.eventDate.setText("Event Date: " + output_dateHappen);
+            String output = outputFormat.format(date);
+            holder.eventDate.setText("Date: " + output);
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -119,14 +114,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     public  class OrderViewHolder extends RecyclerView.ViewHolder {
         TextView orderId;
-        TextView bookingDate;
         TextView eventDate;
         TextView orderStatus;
         Button btnDetail;
         public OrderViewHolder(@NonNull View itemView)  {
             super(itemView);
             orderId=itemView.findViewById(R.id.orderId);
-            bookingDate=itemView.findViewById(R.id.bookingDate);
             eventDate=itemView.findViewById(R.id.eventDate);
             orderStatus=itemView.findViewById(R.id.orderStatus);
             btnDetail=itemView.findViewById(R.id.btnDetail);
